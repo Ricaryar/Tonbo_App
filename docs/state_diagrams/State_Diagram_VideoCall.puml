@@ -1,0 +1,37 @@
+@startuml Video_Call_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> RequestingPermissions : Check Camera/Microphone Permissions
+RequestingPermissions --> PermissionDenied : Permission Denied
+RequestingPermissions --> PermissionGranted : Permission Granted
+
+PermissionDenied --> RequestingPermissions : Request Permission Again
+PermissionGranted --> InitializingCall : Setup Camera/Microphone
+
+InitializingCall --> Connecting : Start Video Call
+Connecting --> Connected : Connection Established
+Connecting --> ConnectionFailed : Connection Failed
+
+Connected --> VideoCalling : Video Call Active
+VideoCalling --> Muting : Mute Button Clicked
+VideoCalling --> Unmuting : Unmute Button Clicked
+VideoCalling --> SwitchingCamera : Switch Camera Button Clicked
+VideoCalling --> EndingCall : End Call Button Clicked
+
+Muting --> VideoCalling : Microphone Muted
+Unmuting --> VideoCalling : Microphone Unmuted
+SwitchingCamera --> VideoCalling : Camera Switched
+
+EndingCall --> CallEnded : Call Terminated
+ConnectionFailed --> CallEnded : Show Error Message
+
+CallEnded --> [*] : Activity Finished
+
+@enduml

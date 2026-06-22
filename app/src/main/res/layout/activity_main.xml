@@ -1,0 +1,153 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#000000">
+
+    <!-- 頂部標題和按鈕區域 - 固定不動 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="20dp"
+        android:paddingBottom="16dp"
+        android:background="#000000">
+
+        <TextView
+            android:id="@+id/appTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textColor="#FFFFFF"
+            android:textSize="45sp"
+            android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="28sp"
+            android:autoSizeMaxTextSize="45sp"
+            android:autoSizeStepGranularity="2sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:contentDescription="@string/app_name"
+            android:importantForAccessibility="yes"
+            android:focusable="true"
+            android:minHeight="48dp" />
+
+        <!-- 系統設定按鈕 - 現代化設計 -->
+        <Button
+            android:id="@+id/systemSettingsButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:text="⚙"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_modern_background"
+            android:backgroundTint="@null"
+            android:contentDescription="@string/system_settings_desc"
+            android:layout_marginEnd="12dp"
+            android:minHeight="64dp"
+            android:minWidth="64dp"
+            android:elevation="4dp"
+            android:stateListAnimator="@null" />
+
+        <!-- 語言切換按鈕 - 現代化設計 -->
+        <Button
+            android:id="@+id/languageButton"
+            android:layout_width="80dp"
+            android:layout_height="72dp"
+            android:text="廣"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_language_background"
+            android:backgroundTint="@null"
+            android:contentDescription="@string/language_button_desc_prefix"
+            android:minHeight="72dp"
+            android:minWidth="80dp"
+            android:elevation="4dp"
+            android:stateListAnimator="@null"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:ellipsize="none"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <!-- 功能列表標題 -->
+    <TextView
+        android:id="@+id/functionSelectionTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/function_selection"
+        android:textColor="#4FC3F7"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/function_selection_area_desc" />
+
+    <!-- 頁面指示器 -->
+    <TextView
+        android:id="@+id/pageIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#4FC3F7"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="左滑查看更多功能" />
+
+    <!-- ViewPager2 用於左右滑動的功能頁面 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- 緊急按鈕 -->
+    <LinearLayout
+        android:id="@+id/emergencyButton"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="@drawable/emergency_button_selector"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:contentDescription="@string/emergency_button_desc"
+        android:minHeight="90dp"
+        android:padding="12dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emergency_help_text"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+            
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/long_press_send_text"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="4dp" />
+            
+    </LinearLayout>
+    
+    </LinearLayout>
+
+</FrameLayout>

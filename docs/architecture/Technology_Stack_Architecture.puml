@@ -1,0 +1,81 @@
+@startuml Technology_Stack_Architecture
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam component {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+package "Development Layer" {
+    component "Java" as Java
+    component "Kotlin" as Kotlin
+    component "Android SDK" as SDK
+}
+
+package "AI/ML Layer" {
+    component "TensorFlow Lite" as TFLite {
+        + SSD MobileNet V1
+        + 80 COCO Categories
+    }
+    component "Google ML Kit" as MLKit {
+        + Text Recognition
+        + Chinese & English
+    }
+}
+
+package "Camera Layer" {
+    component "CameraX API" as CameraX
+}
+
+package "TTS Layer" {
+    component "Android TTS" as TTS {
+        + Cantonese
+        + Mandarin
+        + English
+    }
+}
+
+package "LLM Layer" {
+    component "DeepSeek API" as DeepSeek
+    component "GLM-4-Flash API" as GLM
+}
+
+package "Storage Layer" {
+    component "SharedPreferences" as SP
+    component "SQLite" as SQLite
+    component "File System" as FS
+}
+
+Java --> SDK
+Kotlin --> SDK
+SDK --> TFLite
+SDK --> MLKit
+SDK --> CameraX
+SDK --> TTS
+SDK --> SP
+SDK --> SQLite
+SDK --> FS
+
+TFLite --> DeepSeek : Optional
+TFLite --> GLM : Optional
+
+note right of TFLite
+  Java Files:
+  ObjectDetectorHelper.java
+  YoloDetector.java
+  Model: ssd_mobilenet_v1.tflite
+end note
+
+note right of MLKit
+  Java Files:
+  OCRHelper.java
+  Text Recognition API
+end note
+
+note right of TTS
+  Java File:
+  TTSManager.java
+  Multi-language support
+end note
+
+@enduml

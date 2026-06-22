@@ -1,0 +1,339 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary">
+
+    <ScrollView
+        android:id="@+id/settingsScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <!-- 標題欄 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/button_square_background"
+                android:backgroundTint="@color/menu_blue"
+                android:src="@drawable/ic_back_arrow_white"
+                android:scaleType="center"
+                android:contentDescription="@string/back_button_desc"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/systemSettingsTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/system_settings_title"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:contentDescription="@string/system_settings_title" />
+
+            <!-- 佔位符，保持標題居中 -->
+            <View
+                android:layout_width="48dp"
+                android:layout_height="48dp" />
+
+        </LinearLayout>
+
+        <!-- 語音設定區域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/settings_section_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/voiceSettingsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/voice_settings"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="語音設定區域" />
+
+            <!-- 語速設定 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/speechRateText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/speech_rate_display"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="當前語速設定" />
+
+                <SeekBar
+                    android:id="@+id/speechRateSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="200"
+                    android:progress="100"
+                    android:progressTint="@color/primary_blue"
+                    android:thumbTint="@color/primary_blue"
+                    android:contentDescription="調整語速，當前100%" />
+
+            </LinearLayout>
+
+            <!-- 音調設定 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/speechPitchText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/speech_pitch_display"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="當前音調設定" />
+
+                <SeekBar
+                    android:id="@+id/speechPitchSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="200"
+                    android:progress="100"
+                    android:progressTint="@color/primary_blue"
+                    android:thumbTint="@color/primary_blue"
+                    android:contentDescription="調整音調，當前100%" />
+
+            </LinearLayout>
+
+            <!-- 音量設定 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/speechVolumeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/speech_volume_display"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"
+                    android:contentDescription="當前音量設定" />
+
+                <SeekBar
+                    android:id="@+id/speechVolumeSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="200"
+                    android:progress="100"
+                    android:progressTint="@color/primary_blue"
+                    android:thumbTint="@color/primary_blue"
+                    android:contentDescription="調整音量，當前100%" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 無障礙設定區域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/settings_section_background"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/accessibilitySettingsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/accessibility_settings"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="無障礙設定區域" />
+
+            <!-- 震動反饋 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:id="@+id/vibrationFeedbackLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/vibration_feedback"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
+                    android:contentDescription="震動反饋設定" />
+
+                <Button
+                    android:id="@+id/vibrationToggleButton"
+                    android:layout_width="80dp"
+                    android:layout_height="36dp"
+                    android:text="@string/status_on"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:background="@drawable/button_square_background"
+                    android:backgroundTint="@null"
+                    android:contentDescription="震動反饋已開啟，點擊關閉" />
+
+            </LinearLayout>
+
+            <!-- 讀屏支援 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:id="@+id/screenReaderLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/screen_reader_support"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
+                    android:contentDescription="讀屏支援設定" />
+
+                <Button
+                    android:id="@+id/screenReaderToggleButton"
+                    android:layout_width="80dp"
+                    android:layout_height="36dp"
+                    android:text="@string/status_on"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:background="@drawable/button_square_background"
+                    android:backgroundTint="@null"
+                    android:contentDescription="讀屏支援已開啟，點擊關閉" />
+
+            </LinearLayout>
+
+            <!-- 手勢操作 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/gestureOperationsLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/gesture_operations"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="16sp"
+                    android:contentDescription="手勢操作設定" />
+
+                <Button
+                    android:id="@+id/gestureToggleButton"
+                    android:layout_width="80dp"
+                    android:layout_height="36dp"
+                    android:text="@string/status_off"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:background="@drawable/button_square_background"
+                    android:backgroundTint="@null"
+                    android:contentDescription="手勢操作已關閉，點擊開啟" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 測試和重置區域 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/settings_section_background"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/testResetTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/test_and_reset"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:contentDescription="測試與重置區域" />
+
+            <!-- 測試語音按鈕 -->
+            <Button
+                android:id="@+id/testVoiceButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/test_voice"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:background="@drawable/button_square_background"
+                android:backgroundTint="@null"
+                android:layout_marginBottom="12dp"
+                android:contentDescription="測試當前語音設定" />
+
+            <!-- 重置設定按鈕 -->
+            <Button
+                android:id="@+id/resetSettingsButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="@string/reset_settings"
+                android:textSize="16sp"
+                android:textColor="@color/text_primary"
+                android:background="@drawable/button_square_background"
+                android:backgroundTint="@null"
+                android:contentDescription="重置所有設定為預設值" />
+
+        </LinearLayout>
+
+            <!-- 底部間距 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,57 @@
+@startuml Document_Currency_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> RequestingPermission : Check Camera Permission
+RequestingPermission --> PermissionDenied : Permission Denied
+RequestingPermission --> PermissionGranted : Permission Granted
+
+PermissionDenied --> RequestingPermission : Request Permission Again
+PermissionGranted --> CameraInitializing : startCamera()
+
+CameraInitializing --> TextMode : Camera Ready (Default Mode)
+CameraInitializing --> CurrencyMode : Switch to Currency Mode
+
+TextMode --> Capturing : Capture Button Clicked
+CurrencyMode --> Capturing : Capture Button Clicked
+
+TextMode --> CurrencyMode : Switch to Currency Mode
+CurrencyMode --> TextMode : Switch to Text Mode
+
+Capturing --> Processing : Image Captured
+
+Processing --> OCRProcessing : Text Mode
+Processing --> CurrencyProcessing : Currency Mode
+
+OCRProcessing --> OCRComplete : OCR Recognition Done
+CurrencyProcessing --> CurrencyComplete : Currency Detection Done
+
+OCRComplete --> DisplayingResults : Format Text Results
+CurrencyComplete --> DisplayingResults : Format Currency Results
+
+DisplayingResults --> ReadingAloud : Read Button Clicked
+DisplayingResults --> Clearing : Clear Button Clicked
+
+ReadingAloud --> DisplayingResults : Reading Complete
+Clearing --> TextMode : Results Cleared
+
+TextMode --> FlashToggling : Flash Button Clicked
+CurrencyMode --> FlashToggling : Flash Button Clicked
+FlashToggling --> TextMode : Flash Toggled
+FlashToggling --> CurrencyMode : Flash Toggled
+
+TextMode --> Paused : onPause()
+CurrencyMode --> Paused : onPause()
+Paused --> TextMode : onResume()
+Paused --> CurrencyMode : onResume()
+
+TextMode --> [*] : onDestroy()
+CurrencyMode --> [*] : onDestroy()
+
+@enduml

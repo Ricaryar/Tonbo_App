@@ -1,0 +1,43 @@
+@startuml Video_Call_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "VideoCallActivity" as Activity
+participant "Camera" as Camera
+participant "Microphone" as Mic
+participant "Video Call Service" as Service
+
+User -> Activity: Open Video Call
+activate Activity
+
+Activity -> Activity: onCreate()
+Activity -> Activity: checkPermissions()
+
+alt Permissions Granted
+    Activity -> Camera: initializeCamera()
+    Camera --> Activity: Camera Ready
+    Activity -> Mic: initializeMicrophone()
+    Mic --> Activity: Microphone Ready
+    Activity -> Service: startVideoCall()
+    Service --> User: Video Call Connected
+    
+    alt User Mutes/Unmutes
+        User -> Activity: Click Mute Button
+        Activity -> Mic: toggleMute()
+    else User Switches Camera
+        User -> Activity: Click Switch Camera Button
+        Activity -> Camera: switchCamera()
+    else User Ends Call
+        User -> Activity: Click End Call Button
+        Activity -> Service: endCall()
+        Service --> User: Call Ended
+    end
+else Permissions Denied
+    Activity --> User: Request Permissions
+end
+
+Activity -> Activity: finish()
+deactivate Activity
+
+@enduml

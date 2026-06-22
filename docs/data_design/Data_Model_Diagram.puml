@@ -1,0 +1,75 @@
+@startuml Data_Models
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam class {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+class "User Profile" {
+    + String username
+    + String email
+    + String userType
+    + Map<String, Object> preferences
+    + Map<String, Object> settings
+}
+
+class "Detection Result" {
+    + String objectClass
+    + float confidence
+    + Rect boundingBox
+    + String position
+    + long timestamp
+}
+
+class "Conversation History" {
+    + List<Message> messages
+    + List<Long> timestamps
+    + Map<String, Object> context
+}
+
+class "Emergency Event Log" {
+    + long timestamp
+    + String eventType
+    + String status
+}
+
+class "Item Marker" {
+    + String itemName
+    + String description
+    + Location location
+    + Bitmap image
+    + long timestamp
+}
+
+note right of "User Profile"
+  Java File:
+  UserManager.java
+  Storage: SharedPreferences
+end note
+
+note right of "Detection Result"
+  Java File:
+  ObjectDetectorHelper.java
+  Storage: Memory (runtime)
+end note
+
+note right of "Conversation History"
+  Java File:
+  ConversationManager.java
+  Storage: Memory (runtime)
+end note
+
+note right of "Emergency Event Log"
+  Java File:
+  EmergencyManager.java
+  Storage: Log file
+end note
+
+note right of "Item Marker"
+  Java File:
+  FindItemsActivity.java
+  Storage: Local Database
+end note
+
+@enduml

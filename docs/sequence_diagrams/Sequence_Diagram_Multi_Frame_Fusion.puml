@@ -1,0 +1,45 @@
+@startuml Multi_Frame_Fusion_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+participant CameraX
+participant "ObjectDetector\nHelper" as Detector
+participant "Stability Filter" as Filter
+participant "TTSManager" as TTS
+
+loop Every 3 Frames
+    CameraX -> Detector: Frame 1
+    Detector -> Detector: Detect Objects
+    Detector -> Filter: Add Detection Results
+    Filter -> Filter: Track Object Stability
+    
+    CameraX -> Detector: Frame 2
+    Detector -> Detector: Detect Objects
+    Detector -> Filter: Add Detection Results
+    Filter -> Filter: Update Stability Count
+    
+    CameraX -> Detector: Frame 3
+    Detector -> Detector: Detect Objects
+    Detector -> Filter: Add Detection Results
+    Filter -> Filter: Check Stability (3 frames)
+    
+    alt Object Detected in 3 Consecutive Frames
+        Filter -> Filter: Calculate Average Confidence
+        Filter -> Filter: Validate Bounding Box
+        Filter --> Detector: Stable Detection Result
+        Detector -> TTS: Announce Object
+        TTS --> User: Voice Output
+    else Object Not Stable
+        Filter -> Filter: Discard Unstable Detection
+    end
+end
+
+note right of Filter
+  Java File:
+  ObjectDetectorHelper.java
+  Multi-frame fusion algorithm
+  Stability threshold: 3 frames
+  Accuracy: 85-90%
+end note
+
+@enduml

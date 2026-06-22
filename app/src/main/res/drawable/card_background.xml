@@ -1,0 +1,10 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 深色背景 - 適合視障人士 -->
+    <solid android:color="#1A1A1A" />
+    <corners android:radius="16dp" />
+    <!-- 明顯的邊框 -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/primary_blue" />
+</shape>

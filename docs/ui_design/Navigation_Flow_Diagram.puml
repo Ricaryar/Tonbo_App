@@ -1,0 +1,44 @@
+@startuml Navigation_Flow
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> SplashActivity
+
+SplashActivity --> LoginActivity : Not Logged In
+SplashActivity --> MainActivity : Already Logged In
+
+LoginActivity --> MainActivity : Login/Guest Mode
+
+MainActivity --> RealAIDetectionActivity : Environment Recognition
+MainActivity --> DocumentCurrencyActivity : Document Reading
+MainActivity --> VoiceCommandActivity : Voice Command
+MainActivity --> FindItemsActivity : Find Items
+MainActivity --> TravelAssistantActivity : Travel Assistant
+MainActivity --> InstantAssistanceActivity : Instant Assistance
+MainActivity --> GestureManagementActivity : Gesture Management
+MainActivity --> SettingsActivity : Settings
+
+RealAIDetectionActivity --> MainActivity : Back
+DocumentCurrencyActivity --> MainActivity : Back
+VoiceCommandActivity --> MainActivity : Back
+FindItemsActivity --> MainActivity : Back
+TravelAssistantActivity --> MainActivity : Back
+InstantAssistanceActivity --> MainActivity : Back
+GestureManagementActivity --> MainActivity : Back
+SettingsActivity --> MainActivity : Back
+
+MainActivity --> [*] : App Exit
+
+note right of MainActivity
+  Java File:
+  MainActivity.java
+  Central navigation hub
+  Language switching available
+  Emergency button always accessible
+end note
+
+@enduml

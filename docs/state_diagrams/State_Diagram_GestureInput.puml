@@ -1,0 +1,32 @@
+@startuml Gesture_Input_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> WaitingForGesture : Setup Complete
+
+WaitingForGesture --> Drawing : User Starts Drawing
+Drawing --> GestureDrawn : Drawing Complete
+
+GestureDrawn --> Recognizing : Process Gesture
+Recognizing --> Matching : Match Against Saved Gestures
+
+Matching --> GestureMatched : Match Found
+Matching --> GestureNotMatched : No Match Found
+
+GestureMatched --> ExecutingFunction : Execute Bound Function
+ExecutingFunction --> FunctionExecuted : Function Complete
+FunctionExecuted --> MainScreen : Navigate to MainActivity
+
+GestureNotMatched --> WaitingForGesture : Try Again
+
+WaitingForGesture --> MainScreen : Skip Gesture Login
+
+MainScreen --> [*] : Activity Finished
+
+@enduml

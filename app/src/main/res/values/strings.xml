@@ -1,0 +1,486 @@
+<resources>
+    <string name="app_name">Tonbo</string>
+    
+    <!-- Home Page -->
+    <string name="home_title">Tonbo</string>
+    <string name="function_selection">Function Selection</string>
+    <string name="emergency_button_text">Emergency Help\nLong press 3 sec</string>
+    <string name="emergency_help_text">Emergency Help</string>
+    <string name="long_press_send_text">Long press 3 sec</string>
+    <string name="operation_guide">Operation Guide</string>
+    <string name="operation_guide_title">Operation Guide</string>
+    <string name="operation_guide_content">• Tap function items to enter\n• Top right buttons: Emergency Settings🚨, System Settings⚙, Language Switch\n• Emergency: Long press red button for 3 seconds</string>
+    
+    <!-- Common Buttons -->
+    <string name="back_button_desc">Back Button</string>
+    
+    <!-- Gesture Management -->
+    <string name="gesture_management">手勢管理</string>
+    <string name="gesture_management_desc">手勢管理功能，繪製手勢綁定應用功能</string>
+    <string name="draw_gesture_hint">在區域內繪製手勢</string>
+    <string name="gesture_recognized">已識別手勢</string>
+    <string name="gesture_not_recognized">未識別到已保存的手勢</string>
+    <string name="create_gesture">創建手勢</string>
+    <string name="bind_function">綁定功能</string>
+    <string name="delete_gesture">刪除手勢</string>
+    
+    <!-- Language Buttons -->
+    <string name="language_button_cantonese">廣</string>
+    <string name="language_button_english">EN</string>
+    <string name="language_button_mandarin">普</string>
+    <string name="language_button_desc_prefix">Current language</string>
+    <string name="language_button_desc_suffix">, tap to switch language</string>
+    <string name="language_cantonese_desc">Cantonese</string>
+    <string name="language_english_desc">English</string>
+    <string name="language_mandarin_desc">Mandarin</string>
+    
+    <!-- Voice Command -->
+    <string name="voice_command">Voice Command</string>
+    <string name="voice_command_desc">Voice command button, tap to start voice recognition</string>
+    <string name="voice_command_help">Voice command help: You can say environment recognition, document assistant, find items, emergency help, system settings, language switch and other commands</string>
+    <string name="voice_recognition_starting">Starting voice recognition</string>
+    <string name="voice_recognition_listening">Listening...</string>
+    <string name="voice_recognition_error">Voice recognition error</string>
+    <string name="voice_command_not_recognized">Command not recognized, please say a valid command</string>
+    
+    <!-- Voice Command Page -->
+    <string name="voice_command_title">Voice Command</string>
+    <string name="listening_status">Click to Start</string>
+    <string name="listening_active">Listening...</string>
+    <string name="available_commands">Available Commands</string>
+    <string name="start_listening_button">Start listening button</string>
+    <string name="recognition_result_text">Recognition result text</string>
+    <string name="commands_list">• 環境識別：睇下周圍、環境識別\n• 閱讀助手：讀文件、掃描文件\n• 尋找物品：搵嘢、尋找物品\n• 緊急求助：救命、緊急求助\n• 系統設定：設定、打開設定\n• 語言切換：轉語言、切換語言\n• 返回主頁：主頁、返回主頁\n• 時間查詢：幾點、現在幾點\n• 停止監聽：收聲、停止</string>
+
+    <!-- Floating Voice Assistant -->
+    <string name="floating_voice_title">Voice Assistant</string>
+    <string name="floating_voice_bubble_desc">Floating voice assistant. Tap to hear instructions and open the panel. Long press to listen immediately. Drag to move.</string>
+    <string name="floating_voice_bubble_intro">A floating voice assistant button is on screen. Tap it to hear instructions and open the voice panel.</string>
+    <string name="floating_voice_bubble_tap_announce">Voice assistant. Tap opens the panel so you can speak or control the app. Long press to start listening immediately. You can drag the button to move it.</string>
+    <string name="floating_voice_bubble_long_press_announce">Starting to listen now.</string>
+    <string name="floating_voice_panel_open_announce">Voice panel opened. The large button at the top is Start speaking. The top-right button closes the panel. Tap start to speak, tap close to dismiss.</string>
+    <string name="floating_voice_listen_announce">Starting to listen. Please speak.</string>
+    <string name="floating_voice_stop_announce">Stopped listening.</string>
+    <string name="floating_voice_expand_announce">Opening full voice assistant page.</string>
+    <string name="floating_voice_close_announce">Voice panel closed.</string>
+    <string name="floating_voice_tap_to_speak">Tap the microphone button above to speak</string>
+    <string name="floating_voice_expand">Open full voice assistant page</string>
+    <string name="floating_voice_close">Close panel</string>
+    <string name="floating_voice_close_desc">Close voice panel, top right</string>
+    <string name="floating_voice_start_button">Start speaking</string>
+    <string name="floating_voice_start_button_desc">Start speaking, at the top of the panel</string>
+    <string name="floating_voice_stop_button">Stop listening</string>
+    
+    <!-- Find Items Page -->
+    <string name="find_items_title">Find Items</string>
+    <string name="find_items_title_desc">Find Items page title</string>
+    <string name="find_items_ready">Ready to mark or find items</string>
+    <string name="camera_ready">Camera ready</string>
+    <string name="captured_image_desc">Captured image display</string>
+    <string name="item_name_input_desc">Item name input field</string>
+    <string name="capture_button_desc">Capture photo button</string>
+    <string name="mark_item_button_desc">Mark item button</string>
+    <string name="find_item_button_desc">Find items button</string>
+    <string name="status_text_desc">Status text display</string>
+    <string name="capture_photo">Capture Photo</string>
+    <string name="mark_item">Mark Item</string>
+    <string name="find_items">Find Items</string>
+    <string name="item_name_label">Item Name:</string>
+    <string name="item_name_label_desc">Item name label</string>
+    <string name="item_name_hint">Enter item name</string>
+    <string name="photo_captured_successfully">Photo captured successfully</string>
+    <string name="photo_capture_failed">Photo capture failed</string>
+    <string name="please_enter_item_name">Please enter item name</string>
+    <string name="no_photo_to_mark">No photo to mark</string>
+    <string name="item_marked_successfully">Item marked successfully: %1$s</string>
+    <string name="no_marked_items">No marked items found</string>
+    <string name="found_items_count">Found %1$d marked items</string>
+    <string name="marked_items_list">Marked Items (%1$d)</string>
+    <string name="marked_items_list_desc">Marked items list title</string>
+    <string name="selected_item">Selected item: %1$s</string>
+    <string name="going_back_to_home">Going back to home</string>
+    
+    <!-- Travel Assistant / 出行協助 -->
+    <string name="travel_assistant_title">出行協助</string>
+    <string name="travel_assistant_title_desc">出行協助頁面標題</string>
+    <string name="travel_assistant_description">提供導航、路線規劃、交通信息、天氣更新和緊急位置分享服務</string>
+    <string name="travel_assistant_status">出行協助功能準備就緒</string>
+    <string name="travel_assistant_status_desc">出行協助狀態信息</string>
+    <string name="travel_assistant_instruction">點擊下方按鈕使用各項出行協助功能</string>
+    <string name="travel_assistant_instruction_desc">出行協助使用說明</string>
+    
+    <!-- Start travel / navigation flow -->
+    <string name="start_travel_voice">开始出行</string>
+    <string name="start_travel_voice_desc">开始出行按钮</string>
+    <string name="say_destination_prompt">请说出你要去的位置</string>
+    <string name="say_destination_prompt_desc">说出目的地提示</string>
+    <string name="start_speaking">开始说话</string>
+    <string name="start_speaking_desc">开始说话按钮，点击后说出目的地</string>
+    <string name="end_speaking">结束说话</string>
+    <string name="end_speaking_desc">结束说话按钮</string>
+    <string name="recognition_result_label">识别结果</string>
+    <string name="recognition_result_hint">语音识别结果将显示在此，可编辑</string>
+    <string name="confirm_depart">确认出发</string>
+    <string name="contact_volunteer">联系志愿者</string>
+    <string name="contact_volunteer_desc">联系志愿者按钮</string>
+    <string name="voice_status_title">語音狀態</string>
+    <string name="voice_status_title_desc">語音狀態標題</string>
+    <string name="voice_status_desc">語音狀態提示區域</string>
+    <string name="voice_status_text_desc">語音狀態內容</string>
+    <string name="voice_status_ready">就緒</string>
+    <string name="voice_status_listening">正在聆聽...</string>
+    <string name="voice_status_processing">處理中...</string>
+    <string name="voice_status_emergency">緊急模式</string>
+    
+    <!-- Travel Assistant Features -->
+    <string name="navigation">導航</string>
+    <string name="navigation_desc">導航功能按鈕</string>
+    <string name="route_planning">路線規劃</string>
+    <string name="route_planning_desc">路線規劃功能按鈕</string>
+    <string name="traffic_info">交通信息</string>
+    <string name="traffic_info_desc">交通信息功能按鈕</string>
+    <string name="weather_info">天氣信息</string>
+    <string name="weather_info_desc">天氣信息功能按鈕</string>
+    <string name="emergency_location">緊急位置分享</string>
+    <string name="emergency_location_desc">緊急位置分享功能按鈕</string>
+    
+    <!-- Feature Status Messages -->
+    <string name="navigation_feature_coming_soon">導航功能開發中</string>
+    <string name="route_planning_feature_coming_soon">路線規劃功能開發中</string>
+    <string name="traffic_info_feature_coming_soon">交通信息功能開發中</string>
+    <string name="weather_info_feature_coming_soon">天氣信息功能開發中</string>
+    <string name="emergency_location_feature_coming_soon">緊急位置分享功能開發中</string>
+    <string name="language_switch_feature_coming_soon">語言切換功能開發中</string>
+    <string name="operation_stopped">操作已停止</string>
+    
+    <!-- Login / 登入 -->
+    <string name="login_title">登入</string>
+    <string name="login_title_desc">登入頁面標題</string>
+    <string name="login_description">請輸入您的電子郵件和密碼登入，或繼續以訪客身份使用</string>
+    <string name="login_status_ready">準備登入</string>
+    <string name="login_status_desc">登入狀態信息</string>
+    <string name="login_instruction">輸入您的帳戶信息或選擇訪客模式繼續</string>
+    <string name="login_instruction_desc">登入使用說明</string>
+    
+    <!-- Login Form -->
+    <string name="email_label">電子郵件</string>
+    <string name="email_label_desc">電子郵件標籤</string>
+    <string name="email_hint">請輸入電子郵件</string>
+    <string name="email_input_desc">電子郵件輸入框</string>
+    <string name="password_label">密碼</string>
+    <string name="password_label_desc">密碼標籤</string>
+    <string name="password_hint">請輸入密碼</string>
+    <string name="password_input_desc">密碼輸入框</string>
+    
+    <!-- Login Buttons -->
+    <string name="login_button">登入</string>
+    <string name="login_button_desc">登入按鈕</string>
+    <string name="register_button">註冊</string>
+    <string name="register_button_desc">註冊按鈕</string>
+    <string name="guest_login_button">訪客登入</string>
+    <string name="guest_login_button_desc">訪客登入按鈕</string>
+    
+    <!-- Login Messages -->
+    <string name="email_required">請輸入電子郵件</string>
+    <string name="password_required">請輸入密碼</string>
+    <string name="invalid_email">電子郵件格式不正確</string>
+    <string name="logging_in">正在登入...</string>
+    <string name="login_success">登入成功</string>
+    <string name="login_failed">登入失敗，請檢查您的帳戶信息</string>
+    <string name="logging_in_as_guest">正在以訪客身份登入</string>
+    <string name="register_feature_coming_soon">註冊功能開發中</string>
+    
+    <!-- Environment Recognition -->
+    <string name="flash_on">Flash: On</string>
+    <string name="flash_off">Flash: Off</string>
+    <string name="clear_display">Clear Display</string>
+    <string name="voice_broadcast">Voice Broadcast</string>
+    <string name="no_objects_detected">No objects detected</string>
+    <string name="analyzing_environment">Analyzing environment…</string>
+    <string name="camera_permission_needed">Camera permission needed</string>
+    <string name="camera_permission_message">Please grant camera permission in settings, then reopen this function</string>
+    <string name="camera_started_compatibility">Camera started (compatibility mode)</string>
+    <string name="camera_compatibility_message">Using compatibility mode camera, features may be limited</string>
+    <string name="camera_start_failed">Camera start failed</string>
+    <string name="camera_start_error">Error: Unable to start any camera mode</string>
+    <string name="detecting_environment">Detecting environment…</string>
+    <string name="camera_api_incompatible">Camera API incompatible</string>
+    <string name="camera_api_error">Error: Android version too old or API incompatible</string>
+    <string name="camera_bind_failed">Camera bind failed</string>
+    <string name="camera_setup_failed">Camera setup failed</string>
+    <string name="analysis_failed">Analysis failed</string>
+    <string name="analysis_complete">Analysis complete</string>
+    <string name="camera_not_ready">Please wait for camera to be ready</string>
+    <string name="camera_not_ready_status">Camera not ready</string>
+    <string name="no_text_or_currency">No text or currency detected</string>
+    <string name="flash_on_announcement">Flash is on</string>
+    <string name="flash_off_announcement">Flash is off</string>
+    <string name="flash_not_supported">Flash not supported on this device</string>
+    <string name="camera_bind_error">Error: %1$s</string>
+    <string name="detection_status_format">Real-time detection - %1$d objects (%2$dms)</string>
+    <string name="detection_no_objects">Real-time detection - No objects found</string>
+    <string name="detection_status_prefix">Detection status: </string>
+    <string name="detection_results_prefix">Detection results: </string>
+    <string name="detection_results_format">Detected %1$d objects:\n\n</string>
+    <string name="more_objects_format">...and %1$d more objects</string>
+    <string name="go_home_announcement">Going to home page</string>
+    <string name="document_started_message">Camera started, place document or currency in scan area, then tap to capture and scan. System will recognize text content and currency amount</string>
+    <string name="no_content_detected">No content detected</string>
+    <string name="scan_results_placeholder">Scan results will be displayed here...</string>
+    <string name="scan_results_title">Scan Results</string>
+    <string name="ready_to_scan">Ready to scan</string>
+    <string name="results_cleared">Results cleared</string>
+    
+    <!-- Document Currency Activity UI Strings -->
+    <string name="back_to_home">Back to home button</string>
+    <string name="flash_button_desc">Turn on flash button</string>
+    <string name="scan_area_desc">Scan area indicator box</string>
+    <string name="scan_instruction">Place document or currency in frame</string>
+    <string name="status_desc">Current scan status</string>
+    <string name="result_content_desc">Recognition result text content</string>
+    <string name="capture_button">📷\nCapture Scan</string>
+    <string name="document_capture_button_desc">Capture and scan text and currency</string>
+    <string name="read_button">🎤\nRead Aloud</string>
+    <string name="read_button_desc">Read recognition results aloud</string>
+    <string name="clear_button">🧹\nClear</string>
+    <string name="clear_button_desc">Clear scan results</string>
+    <string name="go_back_home">Go back home</string>
+    <string name="capturing_analyzing">Capturing and analyzing</string>
+    <string name="items_detected">%d items</string>
+    <string name="not_scanned_yet">No scan performed yet</string>
+    
+    <string name="document_assistant_announcement">Entering document assistant page</string>
+    <string name="document_assistant_unavailable">Document assistant feature temporarily unavailable</string>
+    <string name="settings_announcement">Entering system settings page</string>
+    <string name="settings_unavailable">System settings feature temporarily unavailable</string>
+    <string name="emergency_settings_unavailable">Unable to open emergency settings page</string>
+    <string name="camera_started_message">Camera started, system is analyzing the scene in real-time and displaying detection boxes. Point the camera at objects to see recognition results</string>
+    <string name="emergency_button_long_press_info">Emergency help button, long press for 3 seconds to send help request</string>
+    <string name="app_title_accessibility">App name, Tonbo</string>
+    <string name="function_selection_accessibility">Function selection area, with five main functions</string>
+    
+    <!-- Function Names -->
+    <string name="function_environment">環境識別</string>
+    <string name="function_document">文檔助手</string>
+    <string name="function_voice_command">語音命令</string>
+    <string name="function_find_items">尋找物品</string>
+    <string name="function_travel">出行協助</string>
+    <string name="function_live_assistance">即時協助</string>
+    <string name="function_settings">系統設定</string>
+    
+    <!-- Function Descriptions -->
+    <string name="desc_environment">描述周圍環境和物體</string>
+    <string name="desc_document">掃描文檔並識別貨幣</string>
+    <string name="desc_voice_command">使用語音命令控制應用</string>
+    <string name="desc_find_items">查找標記的個人物品</string>
+    <string name="desc_live_assistance">與志工進行視頻通話</string>
+    
+    <!-- Environment Recognition Page -->
+    <string name="environment_title">Environment Recognition</string>
+    <string name="camera_switch">Switch Camera</string>
+    <string name="flash_toggle">Flash</string>
+    <string name="detection_status">Detection Status</string>
+    <string name="color_light_info">Color &amp; Light</string>
+    
+    <!-- Document Assistant Page -->
+    <string name="document_title">Document Assistant</string>
+    <string name="text_recognition">Text Recognition</string>
+    <string name="currency_recognition">Currency Recognition</string>
+    <string name="scan_area">Scan Area</string>
+    <string name="recognition_result">Recognition Result</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="environment_recognition_desc">Environment Recognition</string>
+    <string name="document_currency_desc">Document and Currency Assistant</string>
+    <string name="find_items_desc">Find Items</string>
+    <string name="travel_assistant_desc">Travel Assistant</string>
+    <string name="settings_desc">System Settings</string>
+    
+    <!-- Emergency Settings Page -->
+    <string name="emergency_settings_title">Emergency Settings</string>
+    <string name="emergency_contacts">Emergency Contacts</string>
+    <string name="add_contact">Add Contact</string>
+    <string name="contact_name">Contact Name</string>
+    <string name="contact_phone">Phone Number</string>
+    <string name="emergency_message">Emergency Message</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- System Settings Page -->
+    <string name="system_settings_title">System Settings</string>
+    <string name="voice_settings">Voice Settings</string>
+    <string name="speech_rate">Speech Rate (50% - 200%)</string>
+    <string name="speech_pitch">Speech Pitch (50% - 200%)</string>
+    <string name="speech_volume">Speech Volume (0% - 200%)</string>
+    <string name="test_voice">Test Voice</string>
+    <string name="accessibility_settings">Accessibility Settings</string>
+    <string name="vibration_feedback">Vibration Feedback</string>
+    <string name="screen_reader_support">Screen Reader Support</string>
+    <string name="gesture_operations">Gesture Operations</string>
+    <string name="other_settings">Other Settings</string>
+    <string name="reset_settings">Reset Settings</string>
+    
+    <!-- Settings Activity Strings -->
+    <string name="status_on">On</string>
+    <string name="status_off">Off</string>
+    <string name="vibration_enabled">Vibration feedback enabled</string>
+    <string name="vibration_disabled">Vibration feedback disabled</string>
+    <string name="screen_reader_enabled">Screen reader support enabled</string>
+    <string name="screen_reader_disabled">Screen reader support disabled</string>
+    <string name="gesture_enabled">Gesture operations enabled</string>
+    <string name="gesture_disabled">Gesture operations disabled</string>
+    <string name="testing_voice">Testing voice settings</string>
+    <string name="reset_settings_title">Reset Settings</string>
+    <string name="reset_settings_message">Are you sure you want to reset all settings?</string>
+    <string name="settings_reset">All settings have been reset to default</string>
+    <string name="reset_cancelled">Reset cancelled</string>
+    
+    <!-- Emergency Settings Activity Strings -->
+    <string name="emergency_settings_page_title">Emergency Settings</string>
+    <string name="settings_page_title">System Settings</string>
+    <string name="emergency_settings_page_desc">Emergency settings page title</string>
+    
+    <!-- Content Descriptions -->
+    <string name="camera_preview_desc">Camera preview screen</string>
+    <string name="object_detection_overlay_desc">Object detection result overlay, showing detection boxes and labels</string>
+    <string name="detection_status_desc">Detection status prompt</string>
+    <string name="detection_results_desc">Detection results display</string>
+    <string name="point_to_objects_instruction">Point to objects around you to start recognition</string>
+    <string name="emergency_settings_desc">Emergency settings, tap to enter emergency contact settings</string>
+    <string name="system_settings_desc">System settings, tap to enter voice and accessibility settings</string>
+    <string name="function_selection_area_desc">Function selection area, total of four main functions</string>
+    <string name="emergency_button_desc">Emergency help button, long press for 3 seconds to send help request</string>
+    <string name="emergency_setup_complete_title">Emergency Setup Complete</string>
+    <string name="emergency_setup_complete_desc">Emergency setup completed</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="enter_phone_number_desc">Enter new emergency contact phone number</string>
+    <string name="back_button_desc_emergency">Back to home button</string>
+    <string name="add_contact_button_desc">Add emergency contact button</string>
+    <string name="test_emergency_button_desc">Test emergency function button</string>
+    <string name="setup_complete_button_desc">Complete setup button</string>
+    <string name="contacts_list_desc">Emergency contacts list</string>
+    <string name="error_enter_phone">Please enter a phone number</string>
+    <string name="error_invalid_phone">Invalid phone number format</string>
+    <string name="error_contact_exists">This contact already exists</string>
+    <string name="error_add_contact">Please add at least one emergency contact</string>
+    <string name="settings_saved">Settings saved</string>
+    <string name="emergency_settings_saved">Emergency settings saved</string>
+    
+    <!-- Settings Activity Layout Strings -->
+    <string name="test_and_reset">Test and Reset</string>
+    
+    <!-- Emergency Contact Item Strings -->
+    <string name="contact_phone_placeholder">Contact phone number</string>
+    <string name="remove_button">Remove</string>
+    
+    <!-- Emergency Settings Layout Strings -->
+    <string name="add_emergency_contact_title">Add Emergency Contact</string>
+    <string name="add_button">Add</string>
+    <string name="emergency_contacts_list_title">Emergency Contacts</string>
+    <string name="emergency_message_preview">Emergency Message Preview</string>
+    <string name="test_emergency_function">Test Emergency Function</string>
+    
+    <!-- Settings Voice Control Strings -->
+    <string name="speech_rate_display">Speech Rate: %d%%</string>
+    <string name="speech_pitch_display">Pitch: %d%%</string>
+    <string name="speech_volume_display">Volume: %d%%</string>
+    
+    <!-- Emergency Settings Additional Strings -->
+    <string name="phone_examples">e.g.: 999, +86-138-0000-0000</string>
+    <string name="default_message_label">Default Message:</string>
+    <string name="test_emergency_assistance">Test Emergency Assistance</string>
+    <string name="test_mode_warning">Note: Test mode will not send actual assistance messages, only tests voice and vibration functions</string>
+    <string name="complete_setup">Complete Setup</string>
+    
+    <!-- Emergency Message Content -->
+    <string name="emergency_message_content">Emergency! I\'m using Tonbo app and need immediate assistance. Please contact me as soon as possible.</string>
+    <string name="emergency_message_preview_format">Default Message:\n%s</string>
+    <string name="test_emergency_confirmation">About to test emergency assistance function. This will not send actual assistance messages, only tests voice and vibration. Continue?</string>
+    <string name="test_emergency_button_complete">✅ Test Emergency Assistance</string>
+    <string name="test_emergency_button_incomplete">🚨 Test Emergency Assistance</string>
+    
+    <!-- Settings Detailed Voice Feedback -->
+    <string name="speech_rate_changed_to">Speech rate adjusted to %d%%</string>
+    <string name="speech_pitch_changed_to">Pitch adjusted to %d%%</string>
+    <string name="speech_volume_changed_to">Volume adjusted to %d%%</string>
+    <string name="vibration_feedback_status_on">Vibration feedback enabled</string>
+    <string name="vibration_feedback_status_off">Vibration feedback disabled</string>
+    <string name="screen_reader_status_on">Screen reader support enabled, will optimize voice announcements and content descriptions</string>
+    <string name="screen_reader_status_off">Screen reader support disabled</string>
+    <string name="gesture_operations_status_on">Gesture operations enabled</string>
+    <string name="gesture_operations_status_off">Gesture operations disabled</string>
+    <string name="current_speech_rate">Current speech rate is set to %d%%</string>
+    <string name="current_speech_pitch">Current pitch is set to %d%%</string>
+    <string name="current_speech_volume">Current volume is set to %d%%</string>
+    <string name="current_vibration_status">Vibration feedback is currently %s</string>
+    <string name="current_screen_reader_status">Screen reader support is currently %s</string>
+    <string name="current_gesture_status">Gesture operations are currently %s</string>
+    <string name="status_enabled">enabled</string>
+    <string name="status_disabled">disabled</string>
+    
+    <!-- Common Buttons -->
+    <string name="back">Back</string>
+    <string name="confirm">Confirm</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    
+    <!-- Language Switch -->
+    <string name="language_cantonese">廣</string>
+    <string name="language_english">EN</string>
+    <string name="language_mandarin">普</string>
+    
+    <!-- Splash Screen -->
+    <string name="splash_slogan">Your Visual Partner</string>
+    
+    <!-- Accessibility Description -->
+    <string name="accessibility_service_description">Tonbo accessibility service to assist visually impaired users</string>
+    
+    <!-- 環境識別開始按鈕 -->
+    <string name="start_detection">開始檢測</string>
+    <string name="start_detection_desc">點擊開始環境檢測</string>
+    <string name="stop_detection">停止檢測</string>
+    <string name="stop_detection_desc">點擊停止環境檢測</string>
+    <string name="detection_started">檢測已開始</string>
+    <string name="detection_stopped">檢測已停止</string>
+    
+    <!-- High Precision Mode -->
+    <string name="high_precision_mode_on">高精度模式：開啟</string>
+    <string name="high_precision_mode_off">高精度模式：關閉</string>
+    <string name="high_precision_mode_desc">切換高精度檢測模式</string>
+    <string name="high_precision_enabled">高精度模式已啟用，檢測更頻繁</string>
+    <string name="high_precision_disabled">高精度模式已關閉，節省電量</string>
+    
+    <!-- 即時協助相關 -->
+    <string name="instant_assistance_title">即時協助</string>
+    <string name="instant_assistance_desc">一鍵呼叫志工獲得即時協助</string>
+    <string name="ready_to_assist">準備協助</string>
+    <string name="checking_connection">檢查連接中...</string>
+    <string name="quick_call_desc">一鍵呼叫志工</string>
+    <string name="quick_message_desc">快速發送訊息</string>
+    <string name="video_call_desc">視訊連線志工</string>
+    <string name="help_button_desc">幫助按鈕</string>
+    
+    <!-- 即時協助功能說明 -->
+    <string name="instant_assistance_help">即時協助功能說明：\n1. 一鍵呼叫：直接撥打電話給志工\n2. 快速訊息：發送預設訊息給志工\n3. 視訊連線：進行視訊通話獲得協助\n所有功能都需要網絡連接和相應權限。</string>
+    
+    <!-- 狀態訊息 -->
+    <string name="calling_volunteer">正在呼叫志工...</string>
+    <string name="sending_message">正在發送訊息...</string>
+    <string name="connecting_video">正在連線視訊...</string>
+    <string name="message_sent">訊息已發送給志工</string>
+    <string name="call_failed">呼叫失敗，請檢查網絡連接</string>
+    <string name="message_failed">發送訊息失敗，請檢查網絡連接</string>
+    <string name="video_failed">視訊連線失敗，請檢查網絡連接</string>
+    <string name="connection_normal">連接正常</string>
+    
+    <!-- 權限相關 -->
+    <string name="call_permission_granted">通話權限已授予</string>
+    <string name="call_permission_denied">需要通話權限才能呼叫志工</string>
+    <string name="sms_permission_granted">簡訊權限已授予</string>
+    <string name="sms_permission_denied">需要簡訊權限才能發送訊息</string>
+    <string name="camera_permission_granted">相機權限已授予</string>
+    <string name="camera_permission_denied">需要相機權限才能進行視訊通話</string>
+    
+    <!-- 志工訊息 -->
+    <string name="volunteer_message">您好，我是視障人士，需要即時協助。</string>
+</resources>

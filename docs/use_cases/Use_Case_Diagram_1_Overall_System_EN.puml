@@ -1,0 +1,334 @@
+@startuml Overall_System_Use_Cases_EN
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam usecase {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+    FontSize 12
+}
+skinparam actor {
+    BackgroundColor #FFF9C4
+    BorderColor #F57F17
+    FontSize 12
+}
+skinparam package {
+    BackgroundColor #F5F5F5
+    BorderColor #666666
+}
+
+left to right direction
+
+actor "Visually Impaired\nUser\n(Primary User)" as User
+actor "Guest User\n(Visitor)" as Guest
+actor "System\n(Automated)" as System
+
+package "Core Features\n(4 Use Cases)" #LightBlue {
+    usecase "UC1: Environment\nRecognition" as UC1
+    usecase "UC2: Document &\nCurrency Reading" as UC2
+    usecase "UC3: Emergency\nAssistance" as UC3
+    usecase "UC4: Voice Command" as UC4
+}
+
+package "Auxiliary Features\n(4 Use Cases)" #LightGreen {
+    usecase "UC5: Find Items" as UC5
+    usecase "UC6: Travel Assistant" as UC6
+    usecase "UC7: Instant Assistance" as UC7
+    usecase "UC8: Gesture Management" as UC8
+}
+
+package "System Features\n(3 Use Cases)" #LightYellow {
+    usecase "UC9: User Login/\nRegister" as UC9
+    usecase "UC10: System Settings" as UC10
+    usecase "UC11: Language Switch" as UC11
+}
+
+' User associations
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC5
+User --> UC6
+User --> UC7
+User --> UC8
+User --> UC9
+User --> UC10
+User --> UC11
+
+' Guest associations (cannot login/register)
+Guest --> UC1
+Guest --> UC2
+Guest --> UC3
+Guest --> UC4
+Guest --> UC5
+Guest --> UC6
+Guest --> UC7
+Guest --> UC8
+Guest --> UC10
+Guest --> UC11
+
+' System associations (automated processes)
+System --> UC1 : Auto-detection
+System --> UC2 : OCR Processing
+System --> UC3 : Auto-dial
+System --> UC4 : Speech Recognition
+
+' Detailed notes for each use case
+note right of UC1
+  **UC1: Environment Recognition**
+  Java Files:
+  - RealAIDetectionActivity.java
+  - ObjectDetectorHelper.java
+  - YoloDetector.java
+  - NightModeOptimizer.java
+  - DetectionOverlayView.java
+  
+  Features:
+  - Real-time object detection (80 COCO categories)
+  - Multi-frame fusion (3-frame confirmation)
+  - Night mode optimization
+  - Position description (left/center/right)
+  - Detection accuracy: 85-90%
+  - False positive rate: 10-15%
+  
+  Implementation:
+  - TensorFlow Lite (SSD MobileNet V1)
+  - Frame processing: Every 3 frames
+  - Stability filtering: 2-frame confirmation
+end note
+
+note right of UC2
+  **UC2: Document & Currency Reading**
+  Java Files:
+  - DocumentCurrencyActivity.java
+  - OCRHelper.java
+  - CurrencyDetector.java
+  
+  Features:
+  - OCR text recognition (Chinese & English)
+  - Hong Kong currency recognition
+  - Voice playback (full-text or line-by-line)
+  - Scanning area guidance
+  
+  Implementation:
+  - Google ML Kit Text Recognition API
+  - Supports printed and handwritten text
+  - Processing time: 2-3 seconds (A4 document)
+end note
+
+note right of UC3
+  **UC3: Emergency Assistance**
+  Java Files:
+  - EmergencyManager.java
+  - MainActivity.java
+  - TTSManager.java
+  - VibrationManager.java
+  
+  Features:
+  - Long press 3 seconds activation
+  - Direct 999 dialing (Hong Kong emergency service)
+  - Voice confirmation
+  - Vibration alert (emergency pattern)
+  - Permission handling (fallback to dialer)
+  
+  Implementation:
+  - Single-function design (no contact management)
+  - EmergencyManager (Singleton pattern)
+  - AppConstants.EMERGENCY_LONG_PRESS_DURATION_MS = 3000
+end note
+
+note right of UC4
+  **UC4: Voice Command**
+  Java Files:
+  - VoiceCommandActivity.java
+  - VoiceCommandManager.java
+  - VoiceCommandBuilder.java
+  - ASRManager.java
+  - StreamingVoiceAI.java
+  - ConversationManager.java
+  - LLMClient.java
+  - LLMConfig.java
+  
+  Features:
+  - Multi-language speech recognition
+  - Fuzzy matching algorithm
+  - Continuous conversation mode
+  - LLM integration (DeepSeek, GLM-4-Flash)
+  - Sleep mode (30s silence)
+  - Voice wake-up
+  
+  Implementation:
+  - ASR Engines: Android Native, Sherpa-Onnx, FunASR
+  - Multi-dimensional similarity calculation
+  - Context-aware conversation management
+end note
+
+note right of UC5
+  **UC5: Find Items**
+  Java Files:
+  - FindItemsActivity.java
+  - ObjectSearchManager.java
+  
+  Features:
+  - Mark items with image capture
+  - Add item description
+  - Find marked items using camera
+  - Location guidance
+  - Save item location to database
+  
+  Implementation:
+  - Image feature matching
+  - Local database storage
+  - Real-time camera analysis
+end note
+
+note right of UC6
+  **UC6: Travel Assistant**
+  Java Files:
+  - TravelAssistantActivity.java
+  
+  Features:
+  - Navigation (future enhancement)
+  - Traffic information (future enhancement)
+  - Weather updates (future enhancement)
+  - Emergency location sharing
+  
+  Implementation:
+  - Requires third-party API integration
+  - GPS location services
+  - Location sharing via SMS/Message
+end note
+
+note right of UC7
+  **UC7: Instant Assistance**
+  Java Files:
+  - InstantAssistanceActivity.java
+  - VideoCallActivity.java
+  
+  Features:
+  - Call volunteer
+  - Send quick message
+  - Video call support
+  - Contact management
+  
+  Implementation:
+  - Phone API integration
+  - SMS API integration
+  - Video call framework (future)
+end note
+
+note right of UC8
+  **UC8: Gesture Management**
+  Java Files:
+  - GestureManagementActivity.java
+  - GestureInputActivity.java
+  - GestureRecognitionManager.java
+  - GestureDrawView.java
+  
+  Features:
+  - Create custom gestures
+  - Draw gesture patterns on screen
+  - Bind functions to gestures
+  - Gesture recognition and execution
+  - Manage existing gestures
+  
+  Implementation:
+  - Touch gesture capture
+  - Pattern matching algorithm
+  - Function binding storage
+end note
+
+note right of UC9
+  **UC9: User Login/Register**
+  Java Files:
+  - LoginActivity.java
+  - UserManager.java
+  - SplashActivity.java
+  
+  Features:
+  - User login with credentials
+  - User registration
+  - Guest mode (skip registration)
+  - Session management
+  - User preference loading
+  
+  Implementation:
+  - UserManager (Singleton pattern)
+  - SharedPreferences for session
+  - Firebase integration (future)
+end note
+
+note right of UC10
+  **UC10: System Settings**
+  Java Files:
+  - SettingsActivity.java
+  - TTSManager.java
+  - VibrationManager.java
+  - LocaleManager.java
+  
+  Features:
+  - Speech parameters adjustment:
+    * Speech rate: 0-200%
+    * Pitch: 0-200%
+    * Volume: 0-200%
+  - Accessibility options:
+    * Vibration feedback toggle
+    * Screen reader support
+    * Gesture controls
+  - Settings persistence
+  
+  Implementation:
+  - SharedPreferences storage
+  - Real-time parameter application
+  - Settings validation
+end note
+
+note right of UC11
+  **UC11: Language Switch**
+  Java Files:
+  - LocaleManager.java
+  - MainActivity.java
+  - TTSManager.java
+  - All Activity classes
+  
+  Features:
+  - Switch between 3 languages:
+    * Cantonese (廣東話)
+    * Mandarin (普通話)
+    * English
+  - Dynamic UI update
+  - TTS language synchronization
+  - Language preference persistence
+  
+  Implementation:
+  - LocaleManager (Singleton pattern)
+  - Resource file switching
+  - Runtime locale update
+  - SharedPreferences storage
+end note
+
+note bottom
+  **Total Use Cases: 11**
+  - Core Features: 4 (UC1-UC4)
+  - Auxiliary Features: 4 (UC5-UC8)
+  - System Features: 3 (UC9-UC11)
+  
+  **Main Screen Functions: 7**
+  1. Environment Recognition
+  2. Document Assistant
+  3. Voice Assistant
+  4. Find Items
+  5. Live Assistance
+  6. Travel Assistant
+  7. Gesture Management
+  
+  **Additional Features:**
+  - Emergency Button (always accessible on main screen)
+  - System Settings Button (top right)
+  - Language Switch Button (top right)
+  
+  **File Location:**
+  app/src/main/java/com/example/tonbo_app/
+end note
+
+@enduml

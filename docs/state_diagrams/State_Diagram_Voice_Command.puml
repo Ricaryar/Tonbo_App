@@ -1,0 +1,26 @@
+@startuml Voice_Command_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Idle : App Started
+
+Idle --> Listening : User Activates Voice Command
+Listening --> Processing : Speech Recognized
+Processing --> Executing : Command Matched
+Executing --> Feedback : Function Executed
+Feedback --> Idle : Complete
+
+Listening --> ContinuousMode : User Activates Continuous
+ContinuousMode --> Listening : User Input Received
+ContinuousMode --> SleepMode : 30s Silence
+SleepMode --> ContinuousMode : Voice Wake-up
+ContinuousMode --> Idle : User Exits
+
+Processing --> Feedback : Command Not Found
+
+
+@enduml

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/button_square_background"
+            android:backgroundTint="@color/menu_blue"
+            android:src="@drawable/ic_back_arrow_white"
+            android:scaleType="center"
+            android:contentDescription="@string/back_button_desc"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/pageTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/instant_assistance_title"
+            android:textColor="@color/primary_blue"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:contentDescription="@string/instant_assistance_title" />
+    </LinearLayout>
+
+    <!-- 視障：藍底白字；義工：橙底白字，色相差大易分辨 -->
+    <Button
+        android:id="@+id/btnBlindUser"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="140dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_square_background"
+        android:backgroundTint="#1565C0"
+        app:backgroundTint="#1565C0"
+        android:padding="16dp" />
+
+    <Button
+        android:id="@+id/btnVolunteer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:minHeight="140dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_square_background"
+        android:backgroundTint="#E65100"
+        app:backgroundTint="#E65100"
+        android:padding="16dp" />
+</LinearLayout>

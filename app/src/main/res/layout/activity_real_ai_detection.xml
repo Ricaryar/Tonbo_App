@@ -1,0 +1,115 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#000000">
+
+    <!-- 標題欄 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#333333"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- 回上一頁按鈕 -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/button_square_background"
+            android:backgroundTint="@color/menu_blue"
+            android:src="@drawable/ic_back_arrow_white"
+            android:scaleType="center"
+            android:contentDescription="返回主頁"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:padding="8dp" />
+
+        <!-- 標題 -->
+        <TextView
+            android:id="@+id/pageTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="環境識別助手"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginHorizontal="16dp" />
+
+        <!-- 佔位符保持對稱 -->
+        <View
+            android:layout_width="60dp"
+            android:layout_height="60dp" />
+
+    </LinearLayout>
+
+    <!-- 相機預覽區域 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="8dp">
+
+        <!-- 相機預覽 -->
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+        
+        <!-- 檢測結果覆蓋層 -->
+        <com.example.tonbo_app.OptimizedDetectionOverlayView
+            android:id="@+id/detectionOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
+
+        <!-- 右上角狀態指示燈 -->
+        <View
+            android:id="@+id/statusIndicator"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="24dp"
+            android:background="@drawable/status_indicator_ready"
+            android:elevation="8dp" />
+
+    </FrameLayout>
+
+    <!-- 控制按鈕區域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="#333333">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="開始識別"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_modern_background"
+            android:layout_marginEnd="8dp"
+            android:enabled="false" />
+
+        <Button
+            android:id="@+id/stopButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="停止識別"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_emergency_background"
+            android:layout_marginStart="8dp"
+            android:enabled="false" />
+
+    </LinearLayout>
+
+</LinearLayout>

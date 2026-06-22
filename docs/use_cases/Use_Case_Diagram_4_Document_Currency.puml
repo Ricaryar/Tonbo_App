@@ -1,0 +1,94 @@
+@startuml Document_Currency_Use_Cases
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam usecase {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+skinparam actor {
+    BackgroundColor #FFF9C4
+    BorderColor #F57F17
+}
+
+left to right direction
+
+actor "Visually Impaired\nUser" as User
+actor "System\n(Camera)" as System
+
+package "Document Reading" {
+    usecase "Open Document\nReading Mode" as DOC1
+    usecase "Switch to Text\nMode" as DOC2
+    usecase "Capture Document\nImage" as DOC3
+    usecase "Preprocess Image" as DOC4
+    usecase "Perform OCR\nRecognition" as DOC5
+    usecase "Extract Text\nBlocks" as DOC6
+    usecase "Format Text\nOutput" as DOC7
+    usecase "Read Text Aloud\n(Full Text)" as DOC8
+    usecase "Read Text Aloud\n(Line by Line)" as DOC9
+    usecase "Display Results" as DOC10
+    usecase "Handle OCR\nError" as DOC11
+    
+    DOC1 ..> DOC2 : <<include>>
+    DOC1 ..> DOC3 : <<include>>
+    DOC3 ..> DOC4 : <<include>>
+    DOC4 ..> DOC5 : <<include>>
+    DOC5 ..> DOC6 : <<include>>
+    DOC6 ..> DOC7 : <<include>>
+    DOC7 ..> DOC8 : <<extend>>
+    DOC7 ..> DOC9 : <<extend>>
+    DOC7 ..> DOC10 : <<include>>
+    DOC5 ..> DOC11 : <<extend>>
+}
+
+package "Currency Recognition" {
+    usecase "Open Currency\nRecognition Mode" as CUR1
+    usecase "Switch to Currency\nMode" as CUR2
+    usecase "Capture Currency\nImage" as CUR3
+    usecase "Analyze Currency\nFeatures" as CUR4
+    usecase "Detect Currency\nType" as CUR5
+    usecase "Identify Denomination" as CUR6
+    usecase "Announce Currency\nValue" as CUR7
+    usecase "Display Currency\nInfo" as CUR8
+    usecase "Handle Recognition\nError" as CUR9
+    
+    CUR1 ..> CUR2 : <<include>>
+    CUR1 ..> CUR3 : <<include>>
+    CUR3 ..> CUR4 : <<include>>
+    CUR4 ..> CUR5 : <<include>>
+    CUR5 ..> CUR6 : <<include>>
+    CUR6 ..> CUR7 : <<include>>
+    CUR6 ..> CUR8 : <<include>>
+    CUR5 ..> CUR9 : <<extend>>
+}
+
+package "Common Features" {
+    usecase "Toggle Flash\nLight" as COM1
+    usecase "Clear Results" as COM2
+    usecase "Navigate Back" as COM3
+    usecase "Provide Voice\nGuidance" as COM4
+    usecase "Update Language\nUI" as COM5
+}
+
+User --> DOC1
+User --> CUR1
+User --> DOC2
+User --> CUR2
+User --> DOC3
+User --> CUR3
+User --> DOC8
+User --> DOC9
+User --> COM1
+User --> COM2
+User --> COM3
+
+System --> DOC3
+System --> CUR3
+System --> DOC4
+System --> CUR4
+
+DOC1 ..> COM4 : <<include>>
+CUR1 ..> COM4 : <<include>>
+DOC1 ..> COM5 : <<include>>
+CUR1 ..> COM5 : <<include>>
+
+@enduml

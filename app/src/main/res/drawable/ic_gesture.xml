@@ -1,0 +1,28 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    
+    <!-- 手勢圖標：繪製路徑示意 -->
+    <!-- 圓形邊框 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/primary_blue"
+        android:strokeWidth="3"
+        android:pathData="M 60,10 A 50,50 0 1,1 60,110 A 50,50 0 1,1 60,10"/>
+    
+    <!-- 手勢路徑示意 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/primary_blue"
+        android:strokeWidth="6"
+        android:pathData="M 40,60 L 60,40 L 80,60"/>
+    
+    <!-- 波形手勢示意 -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="@color/primary_blue"
+        android:strokeWidth="4"
+        android:pathData="M 30,80 Q 40,70 50,80 T 70,80"/>
+</vector>

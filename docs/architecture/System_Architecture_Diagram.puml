@@ -1,0 +1,91 @@
+@startuml System_Architecture
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam component {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+package "Presentation Layer" {
+    component [Activities] as Activities
+    component [Fragments] as Fragments
+    component [Views] as Views
+}
+
+package "Business Logic Layer" {
+    component [Managers] as Managers
+    component [Helpers] as Helpers
+    component [Detectors] as Detectors
+}
+
+package "Data Layer" {
+    component [Models] as Models
+    component [Storage] as Storage
+    component [Persistence] as Persistence
+}
+
+package "AI/ML Layer" {
+    component [TensorFlow Lite] as TFLite
+    component [Google ML Kit] as MLKit
+    component [LLM APIs] as LLM
+}
+
+Activities --> Managers
+Activities --> Helpers
+Fragments --> Managers
+Views --> Managers
+
+Managers --> Detectors
+Managers --> Storage
+Helpers --> Detectors
+Helpers --> Storage
+
+Detectors --> TFLite
+Detectors --> MLKit
+Managers --> LLM
+
+Storage --> Persistence
+
+note right of Activities
+  Java Files:
+  MainActivity.java
+  RealAIDetectionActivity.java
+  DocumentCurrencyActivity.java
+  VoiceCommandActivity.java
+  etc.
+end note
+
+note right of Managers
+  Java Files:
+  TTSManager.java
+  VibrationManager.java
+  LocaleManager.java
+  UserManager.java
+  EmergencyManager.java
+  ConversationManager.java
+end note
+
+note right of Detectors
+  Java Files:
+  ObjectDetectorHelper.java
+  YoloDetector.java
+  OCRHelper.java
+  CurrencyDetector.java
+end note
+
+note right of TFLite
+  SSD MobileNet V1
+  80 COCO categories
+end note
+
+note right of MLKit
+  Text Recognition API
+  Chinese & English
+end note
+
+note right of LLM
+  DeepSeek API
+  GLM-4-Flash API
+end note
+
+@enduml

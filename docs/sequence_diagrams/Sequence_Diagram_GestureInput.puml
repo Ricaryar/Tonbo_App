@@ -1,0 +1,36 @@
+@startuml Gesture_Input_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "GestureInputActivity" as Activity
+participant "GestureRecognitionManager" as Manager
+participant "MainActivity" as Main
+
+User -> Activity: Launch App (Gesture Login Enabled)
+activate Activity
+
+Activity -> Activity: onCreate()
+Activity --> User: Show Gesture Input Screen
+
+User -> Activity: Draw Gesture
+Activity -> Activity: captureGesture()
+
+Activity -> Manager: recognizeGesture(pattern)
+activate Manager
+Manager -> Manager: matchAgainstSavedGestures()
+alt Gesture Matched
+    Manager --> Activity: Gesture matched, function bound
+    Activity -> Activity: executeBoundFunction()
+    Activity -> Main: startActivity(MainActivity)
+    Main --> User: Navigate to Main Screen
+else Gesture Not Matched
+    Manager --> Activity: No match found
+    Activity --> User: "Gesture not recognized, try again"
+end
+deactivate Manager
+
+Activity -> Activity: finish()
+deactivate Activity
+
+@enduml

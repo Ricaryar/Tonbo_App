@@ -1,0 +1,34 @@
+@startuml Splash_Activity_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "SplashActivity" as Splash
+participant "GestureManagementActivity" as Gesture
+participant "MainActivity" as Main
+
+User -> Splash: Launch App
+activate Splash
+
+Splash -> Splash: onCreate()
+Splash -> Splash: startEntranceAnimation()
+Splash --> User: Show Logo Animation
+
+Splash -> Splash: Handler.postDelayed(3000ms)
+Splash -> Splash: checkLoginStatusAndNavigate()
+
+Splash -> Gesture: isGestureLoginEnabled()
+activate Gesture
+Gesture --> Splash: boolean result
+deactivate Gesture
+
+alt Gesture Login Enabled
+    Splash -> Main: startActivity(GestureInputActivity)
+else Gesture Login Disabled
+    Splash -> Main: startActivity(MainActivity)
+end
+
+Splash -> Splash: finish()
+deactivate Splash
+
+@enduml

@@ -1,0 +1,53 @@
+@startuml Document_Currency_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "DocumentCurrencyActivity" as Activity
+participant "OCRHelper" as OCR
+participant "CurrencyDetector" as Currency
+participant "TTSManager" as TTS
+
+User -> Activity: Open Document/Currency Screen
+activate Activity
+
+Activity -> Activity: onCreate()
+Activity -> Activity: checkCameraPermission()
+
+alt Permission Granted
+    Activity -> Activity: startCamera()
+    Activity --> User: Show Camera Preview
+    
+    alt User Switches to Text Mode
+        User -> Activity: Click Text Mode Button
+        Activity -> Activity: switchToTextMode()
+    else User Switches to Currency Mode
+        User -> Activity: Click Currency Mode Button
+        Activity -> Activity: switchToCurrencyMode()
+    end
+    
+    alt User Captures Image
+        User -> Activity: Click Capture Button
+        Activity -> Activity: captureAndAnalyze()
+        
+        alt Text Mode
+            Activity -> OCR: recognizeText(bitmap)
+            activate OCR
+            OCR --> Activity: String text
+            deactivate OCR
+            Activity -> TTS: speak(text)
+            TTS --> User: Read Text Aloud
+        else Currency Mode
+            Activity -> Currency: detectCurrency(bitmap)
+            activate Currency
+            Currency --> Activity: CurrencyResult
+            deactivate Currency
+            Activity -> TTS: speak(currencyValue)
+            TTS --> User: Announce Currency
+        end
+    end
+end
+
+deactivate Activity
+
+@enduml

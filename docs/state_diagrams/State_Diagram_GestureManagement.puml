@@ -1,0 +1,50 @@
+@startuml Gesture_Management_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> Ready : Setup Complete
+
+Ready --> Drawing : User Starts Drawing Gesture
+Drawing --> GestureDrawn : Drawing Complete
+
+GestureDrawn --> Saving : Save Button Clicked
+GestureDrawn --> Clearing : Clear Button Clicked
+
+Saving --> EnteringName : Show Save Dialog
+EnteringName --> BindingFunction : Name Entered
+BindingFunction --> FunctionBound : Function Selected
+FunctionBound --> GestureSaved : Save to Database
+GestureSaved --> Ready : Gesture Saved
+
+Clearing --> Ready : Gesture Cleared
+
+Ready --> ViewingGestures : View Saved Gestures
+ViewingGestures --> EditingGesture : Edit Gesture Selected
+ViewingGestures --> DeletingGesture : Delete Gesture Selected
+ViewingGestures --> Ready : Return
+
+EditingGesture --> UpdatingGesture : Update Gesture
+UpdatingGesture --> GestureUpdated : Update Complete
+GestureUpdated --> Ready : Return
+
+DeletingGesture --> GestureDeleted : Delete Confirmed
+GestureDeleted --> Ready : Return
+
+Ready --> TogglingLogin : Gesture Login Switch Toggled
+TogglingLogin --> LoginEnabled : Switch On
+TogglingLogin --> LoginDisabled : Switch Off
+LoginEnabled --> Ready : Setting Saved
+LoginDisabled --> Ready : Setting Saved
+
+Ready --> Paused : onPause()
+Paused --> Ready : onResume()
+
+Ready --> [*] : onDestroy()
+
+@enduml

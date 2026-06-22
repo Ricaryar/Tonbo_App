@@ -1,0 +1,49 @@
+@startuml Instant_Assistance_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "InstantAssistanceActivity" as Activity
+participant "Phone System" as Phone
+participant "SMS Manager" as SMS
+participant "VideoCallActivity" as Video
+
+User -> Activity: Open Instant Assistance
+activate Activity
+
+Activity -> Activity: onCreate()
+Activity -> Activity: checkConnectionStatus()
+Activity --> User: Show Assistance Options
+
+alt User Requests Quick Call
+    User -> Activity: Click Quick Call Button
+    Activity -> Activity: checkCallPermission()
+    alt Permission Granted
+        Activity -> Phone: dial(VOLUNTEER_PHONE)
+        Phone --> User: Call Connected
+    else Permission Denied
+        Activity --> User: Request Permission
+    end
+else User Requests Quick Message
+    User -> Activity: Click Quick Message Button
+    Activity -> Activity: checkSMSPermission()
+    alt Permission Granted
+        Activity -> SMS: sendMessage(VOLUNTEER_PHONE, message)
+        SMS --> User: Message Sent
+    else Permission Denied
+        Activity --> User: Request Permission
+    end
+else User Requests Video Call
+    User -> Activity: Click Video Call Button
+    Activity -> Activity: checkCameraPermission()
+    alt Permission Granted
+        Activity -> Video: startActivity(VideoCallActivity)
+        Video --> User: Video Call Started
+    else Permission Denied
+        Activity --> User: Request Permission
+    end
+end
+
+deactivate Activity
+
+@enduml

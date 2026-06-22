@@ -1,0 +1,28 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 正常狀態 -->
+    <item android:state_enabled="true" android:state_pressed="false" android:state_focused="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />
+            <corners android:radius="16dp" />
+            <stroke android:width="2dp" android:color="#E0E0E0" />
+        </shape>
+    </item>
+    
+    <!-- 按下狀態 -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#F5F5F5" />
+            <corners android:radius="16dp" />
+            <stroke android:width="3dp" android:color="#4FC3F7" />
+        </shape>
+    </item>
+    
+    <!-- 獲得焦點狀態 -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#F8F8F8" />
+            <corners android:radius="16dp" />
+            <stroke android:width="3dp" android:color="#2196F3" />
+        </shape>
+    </item>
+</selector>

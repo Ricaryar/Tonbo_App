@@ -1,0 +1,7 @@
+.git/
+.git 2/
+.gradle/
+build/
+.idea/
+.kotlin/
+releases/tonbo-offline-debug.apk

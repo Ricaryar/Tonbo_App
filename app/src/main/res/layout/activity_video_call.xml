@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_dark">
+
+    <!-- 頂部標題欄 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="@color/background_dark">
+
+        <!-- 返回按鈕 -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/button_square_background"
+            android:backgroundTint="@color/menu_blue"
+            android:src="@drawable/ic_back_arrow_white"
+            android:scaleType="center"
+            android:contentDescription="@string/back_button_desc"
+            android:layout_marginEnd="16dp" />
+
+        <!-- 標題 -->
+        <TextView
+            android:id="@+id/pageTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="視訊通話"
+            android:textColor="@color/primary_blue"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:contentDescription="視頻通話頁面標題" />
+
+    </LinearLayout>
+
+    <!-- 視頻顯示區域 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/black">
+
+        <!-- 遠程視頻容器（全屏） -->
+        <FrameLayout
+            android:id="@+id/remoteVideoContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black" />
+
+        <!-- 本地視頻容器（小窗口，右上角） -->
+        <FrameLayout
+            android:id="@+id/localVideoContainer"
+            android:layout_width="120dp"
+            android:layout_height="160dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="16dp"
+            android:background="@color/black"
+            android:elevation="8dp" />
+
+    </FrameLayout>
+
+    <!-- 控制按鈕區域 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/settings_section_background">
+
+        <!-- 狀態顯示 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="準備加入"
+                android:textColor="@color/primary_blue"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="當前狀態" />
+
+            <TextView
+                android:id="@+id/connectionStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="未連接"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:contentDescription="連接狀態" />
+
+        </LinearLayout>
+
+        <!-- 主要控制按鈕 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+
+            <Button
+                android:id="@+id/joinButton"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:text="📞 加入頻道"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_emergency_background"
+                android:backgroundTint="@null"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="加入視頻通話頻道"
+                android:elevation="4dp" />
+
+            <Button
+                android:id="@+id/leaveButton"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:text="📴 離開頻道"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_modern_background"
+                android:backgroundTint="@null"
+                android:layout_marginStart="8dp"
+                android:contentDescription="離開視頻通話頻道"
+                android:elevation="4dp" />
+
+        </LinearLayout>
+
+        <!-- 次要控制按鈕 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="8dp">
+
+            <Button
+                android:id="@+id/switchCameraButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="🔄 切換攝像頭"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_secondary_background"
+                android:backgroundTint="@null"
+                android:layout_marginEnd="4dp"
+                android:contentDescription="切換前後攝像頭"
+                android:elevation="2dp" />
+
+            <Button
+                android:id="@+id/muteAudioButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="🔇 靜音"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_secondary_background"
+                android:backgroundTint="@null"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:contentDescription="靜音或取消靜音"
+                android:elevation="2dp" />
+
+            <Button
+                android:id="@+id/muteVideoButton"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="📹 關閉視頻"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_secondary_background"
+                android:backgroundTint="@null"
+                android:layout_marginStart="4dp"
+                android:contentDescription="關閉或開啟視頻"
+                android:elevation="2dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+

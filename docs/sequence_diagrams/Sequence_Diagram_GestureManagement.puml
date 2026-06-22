@@ -1,0 +1,44 @@
+@startuml Gesture_Management_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "GestureManagementActivity" as Activity
+participant "GestureRecognitionManager" as Manager
+participant "Database" as DB
+
+User -> Activity: Open Gesture Management
+activate Activity
+
+Activity -> Activity: onCreate()
+Activity -> Manager: getInstance()
+Activity -> Activity: loadSavedGestures()
+Activity --> User: Show Gesture Drawing Area
+
+alt User Creates Gesture
+    User -> Activity: Draw Gesture
+    Activity -> Activity: gestureDrawView.hasDrawing()
+    User -> Activity: Click Save Button
+    Activity -> Activity: showSaveGestureDialog()
+    User -> Activity: Enter Gesture Name
+    Activity -> Activity: Select Function to Bind
+    Activity -> Manager: saveGesture(name, pattern, function)
+    activate Manager
+    Manager -> DB: storeGesture()
+    DB --> Manager: Gesture Saved
+    deactivate Manager
+    Activity --> User: Gesture Saved Successfully
+else User Views Gestures
+    Activity -> Manager: getAllGestures()
+    Manager --> Activity: List<Gesture>
+    Activity --> User: Display Gesture List
+else User Deletes Gesture
+    User -> Activity: Click Delete Button
+    Activity -> Manager: deleteGesture(gestureId)
+    Manager -> DB: removeGesture()
+    Activity --> User: Gesture Deleted
+end
+
+deactivate Activity
+
+@enduml

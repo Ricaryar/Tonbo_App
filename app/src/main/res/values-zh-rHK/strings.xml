@@ -1,0 +1,352 @@
+<resources>
+    <string name="app_name">瞳伴</string>
+    
+    <!-- 主頁 -->
+    <string name="home_title">瞳伴</string>
+    <string name="function_selection">功能選擇</string>
+    <string name="emergency_button_text">緊急求助\n長按3秒發送</string>
+    <string name="emergency_help_text">緊急求助</string>
+    <string name="long_press_send_text">長按3秒發送</string>
+    <string name="operation_guide">操作指引</string>
+    <string name="operation_guide_content">• 點擊功能項目進入對應功能\n• 右上角按鈕：緊急設置🚨、系統設定⚙、語言切換廣\n• 緊急求助：長按底部紅色按鈕3秒</string>
+    
+    <!-- 功能名稱 -->
+    <string name="function_environment">環境識別</string>
+    <string name="function_document">閱讀助手</string>
+    <string name="function_find_items">尋找物品</string>
+    <string name="function_live_assistance">即時協助</string>
+    <string name="function_voice_command">語音命令</string>
+    <string name="desc_voice_command">語音控制應用功能</string>
+    
+    <!-- 語音命令 -->
+    <string name="voice_command">語音命令</string>
+    <string name="voice_command_desc">語音命令按鈕，點擊開始語音識別</string>
+    <string name="voice_command_help">語音命令幫助：你可以說環境識別、閱讀助手、尋找物品、緊急求助、系統設定、語言切換等指令</string>
+    <string name="voice_recognition_starting">開始語音識別</string>
+    <string name="voice_recognition_listening">正在監聽...</string>
+    <string name="voice_recognition_error">語音識別錯誤</string>
+    <string name="voice_command_not_recognized">指令未識別，請說出有效指令</string>
+    
+    <!-- 語音命令頁面 -->
+    <string name="voice_command_title">語音命令</string>
+    <string name="listening_status">點擊開始</string>
+    <string name="listening_active">正在監聽...</string>
+    <string name="available_commands">可用指令</string>
+    <string name="commands_list">• 環境識別：睇下周圍、環境識別\n• 閱讀助手：讀文件、掃描文件\n• 尋找物品：搵嘢、尋找物品\n• 緊急求助：救命、緊急求助\n• 系統設定：設定、打開設定\n• 語言切換：轉語言、切換語言\n• 返回主頁：主頁、返回主頁\n• 時間查詢：幾點、現在幾點\n• 停止監聽：收聲、停止</string>
+    
+    <!-- Find Items Page -->
+    <string name="find_items_title">尋找物品</string>
+    <string name="find_items_title_desc">尋找物品頁面標題</string>
+    <string name="find_items_ready">準備標記或尋找物品</string>
+    <string name="camera_ready">相機已準備就緒</string>
+    <string name="captured_image_desc">拍攝的圖片顯示</string>
+    <string name="item_name_input_desc">物品名稱輸入欄位</string>
+    <string name="capture_button_desc">拍攝照片按鈕</string>
+    <string name="mark_item_button_desc">標記物品按鈕</string>
+    <string name="find_item_button_desc">尋找物品按鈕</string>
+    <string name="status_text_desc">狀態文字顯示</string>
+    <string name="capture_photo">拍攝照片</string>
+    <string name="mark_item">標記物品</string>
+    <string name="find_items">尋找物品</string>
+    <string name="item_name_label">物品名稱：</string>
+    <string name="item_name_label_desc">物品名稱標籤</string>
+    <string name="item_name_hint">輸入物品名稱</string>
+    <string name="photo_captured_successfully">照片拍攝成功</string>
+    <string name="photo_capture_failed">照片拍攝失敗</string>
+    <string name="please_enter_item_name">請輸入物品名稱</string>
+    <string name="no_photo_to_mark">沒有照片可標記</string>
+    <string name="item_marked_successfully">物品標記成功：%1$s</string>
+    <string name="no_marked_items">沒有找到標記的物品</string>
+    <string name="found_items_count">找到%1$d個標記物品</string>
+    <string name="marked_items_list">標記物品(%1$d)</string>
+    <string name="marked_items_list_desc">標記物品列表標題</string>
+    <string name="selected_item">選中物品：%1$s</string>
+    <string name="going_back_to_home">返回主頁</string>
+    
+    <!-- Travel Assistant / 出行協助 -->
+    <string name="travel_assistant_title">出行協助</string>
+    <string name="travel_assistant_title_desc">出行協助頁面標題</string>
+    <string name="travel_assistant_description">提供導航、路線規劃、交通信息、天氣更新和緊急位置分享服務</string>
+    <string name="travel_assistant_status">出行協助功能準備就緒</string>
+    <string name="travel_assistant_status_desc">出行協助狀態信息</string>
+    <string name="travel_assistant_instruction">點擊下方按鈕使用各項出行協助功能</string>
+    <string name="travel_assistant_instruction_desc">出行協助使用說明</string>
+    
+    <!-- Travel Assistant Features -->
+    <string name="navigation">導航</string>
+    <string name="navigation_desc">導航功能按鈕</string>
+    <string name="route_planning">路線規劃</string>
+    <string name="route_planning_desc">路線規劃功能按鈕</string>
+    <string name="traffic_info">交通信息</string>
+    <string name="traffic_info_desc">交通信息功能按鈕</string>
+    <string name="weather_info">天氣信息</string>
+    <string name="weather_info_desc">天氣信息功能按鈕</string>
+    <string name="emergency_location">緊急位置分享</string>
+    <string name="emergency_location_desc">緊急位置分享功能按鈕</string>
+    
+    <!-- Feature Status Messages -->
+    <string name="navigation_feature_coming_soon">導航功能開發中</string>
+    <string name="route_planning_feature_coming_soon">路線規劃功能開發中</string>
+    <string name="traffic_info_feature_coming_soon">交通信息功能開發中</string>
+    <string name="weather_info_feature_coming_soon">天氣信息功能開發中</string>
+    <string name="emergency_location_feature_coming_soon">緊急位置分享功能開發中</string>
+    <string name="language_switch_feature_coming_soon">語言切換功能開發中</string>
+    <string name="operation_stopped">操作已停止</string>
+    
+    <!-- Login / 登入 -->
+    <string name="login_title">登入</string>
+    <string name="login_title_desc">登入頁面標題</string>
+    <string name="login_description">請輸入您的電子郵件和密碼登入，或繼續以訪客身份使用</string>
+    <string name="login_status_ready">準備登入</string>
+    <string name="login_status_desc">登入狀態信息</string>
+    <string name="login_instruction">輸入您的帳戶信息或選擇訪客模式繼續</string>
+    <string name="login_instruction_desc">登入使用說明</string>
+    
+    <!-- Login Form -->
+    <string name="email_label">電子郵件</string>
+    <string name="email_label_desc">電子郵件標籤</string>
+    <string name="email_hint">請輸入電子郵件</string>
+    <string name="email_input_desc">電子郵件輸入框</string>
+    <string name="password_label">密碼</string>
+    <string name="password_label_desc">密碼標籤</string>
+    <string name="password_hint">請輸入密碼</string>
+    <string name="password_input_desc">密碼輸入框</string>
+    
+    <!-- Login Buttons -->
+    <string name="login_button">登入</string>
+    <string name="login_button_desc">登入按鈕</string>
+    <string name="register_button">註冊</string>
+    <string name="register_button_desc">註冊按鈕</string>
+    <string name="guest_login_button">訪客登入</string>
+    <string name="guest_login_button_desc">訪客登入按鈕</string>
+    
+    <!-- Login Messages -->
+    <string name="email_required">請輸入電子郵件</string>
+    <string name="password_required">請輸入密碼</string>
+    <string name="invalid_email">電子郵件格式不正確</string>
+    <string name="logging_in">正在登入...</string>
+    <string name="login_success">登入成功</string>
+    <string name="login_failed">登入失敗，請檢查您的帳戶信息</string>
+    <string name="logging_in_as_guest">正在以訪客身份登入</string>
+    <string name="register_feature_coming_soon">註冊功能開發中</string>
+    
+    <!-- 功能描述 -->
+    <string name="desc_environment">描述周圍環境和物體</string>
+    <string name="desc_document">掃描文件和識別貨幣</string>
+    <string name="desc_find_items">尋找標記的個人物品</string>
+    <string name="desc_live_assistance">視訊連線志工協助</string>
+    
+    <!-- 通用按鈕 -->
+    <string name="back_button_desc">返回按鈕</string>
+    
+    <!-- 語言按鈕 -->
+    <string name="language_button_cantonese">廣</string>
+    <string name="language_button_english">EN</string>
+    <string name="language_button_mandarin">普</string>
+    <string name="language_button_desc_prefix">當前語言</string>
+    <string name="language_button_desc_suffix">，點擊切換語言</string>
+    <string name="language_cantonese_desc">廣東話</string>
+    <string name="language_english_desc">英文</string>
+    <string name="language_mandarin_desc">普通話</string>
+    
+    <!-- 環境識別 -->
+    <string name="environment_title">環境識別</string>
+    <string name="flash_on">閃光燈：開啟</string>
+    <string name="flash_off">閃光燈：關閉</string>
+    <string name="clear_display">清除顯示</string>
+    <string name="voice_broadcast">語音播報</string>
+    <string name="no_objects_detected">未檢測到物體</string>
+    <string name="analyzing_environment">正在分析環境…</string>
+    <string name="camera_permission_needed">需要相機權限</string>
+    <string name="camera_permission_message">請在設定中授予相機權限，然後重新開啟此功能</string>
+    <string name="camera_started_compatibility">相機已啟動（相容模式）</string>
+    <string name="camera_compatibility_message">使用相容模式相機，功能可能受限</string>
+    <string name="camera_start_failed">相機啟動失敗</string>
+    <string name="camera_start_error">錯誤：無法啟動任何相機模式</string>
+    <string name="detecting_environment">正在檢測環境…</string>
+    <string name="camera_api_incompatible">相機API不相容</string>
+    <string name="camera_api_error">錯誤：Android版本過舊或API不相容</string>
+    <string name="camera_bind_failed">相機綁定失敗</string>
+    <string name="camera_bind_error">錯誤：%1$s</string>
+    <string name="detection_status_format">即時檢測 - %1$d個物體（%2$dms）</string>
+    <string name="detection_no_objects">即時檢測 - 未找到物體</string>
+    <string name="detection_status_prefix">檢測狀態：</string>
+    <string name="detection_results_prefix">檢測結果：</string>
+    <string name="detection_results_format">檢測到%1$d個物體：\n\n</string>
+    <string name="more_objects_format">...還有%1$d個物體</string>
+    <string name="go_home_announcement">返回主頁</string>
+    
+    <!-- 閱讀助手 -->
+    <string name="document_title">閱讀助手</string>
+    <string name="document_started_message">相機已啟動，請將文件或貨幣放在掃描區域，然後點擊拍攝掃描。系統將識別文字內容和貨幣金額</string>
+    <string name="no_content_detected">未檢測到內容</string>
+    <string name="scan_results_placeholder">掃描結果將顯示在這裡</string>
+    <string name="scan_results_title">掃描結果</string>
+    <string name="ready_to_scan">準備掃描</string>
+    <string name="results_cleared">結果已清除</string>
+    <string name="back_to_home">返回主頁</string>
+    <string name="flash_button_desc">閃光燈按鈕</string>
+    <string name="scan_area_desc">掃描區域</string>
+    <string name="scan_instruction">將文件或貨幣放在框內</string>
+    <string name="status_desc">狀態描述</string>
+    <string name="result_content_desc">結果內容描述</string>
+    <string name="capture_button">拍攝</string>
+    <string name="document_capture_button_desc">拍攝按鈕</string>
+    <string name="read_button">讀取</string>
+    <string name="read_button_desc">讀取按鈕</string>
+    <string name="clear_button">清除</string>
+    <string name="clear_button_desc">清除按鈕</string>
+    <string name="go_back_home">返回主頁</string>
+    <string name="camera_setup_failed">相機設置失敗</string>
+    <string name="capturing_analyzing">正在拍照並分析</string>
+    <string name="analysis_complete">分析完成</string>
+    <string name="items_detected">共識別到%d個項目</string>
+    <string name="analysis_failed">分析失敗</string>
+    <string name="camera_not_ready">請等待相機準備就緒</string>
+    <string name="camera_not_ready_status">相機未就緒</string>
+    <string name="no_text_or_currency">未識別到任何文字或貨幣</string>
+    <string name="not_scanned_yet">尚未進行掃描分析</string>
+    <string name="flash_on_announcement">閃光燈已開啟</string>
+    <string name="flash_off_announcement">閃光燈已關閉</string>
+    <string name="flash_not_supported">此設備不支持閃光燈</string>
+    
+    <!-- 設定頁面 -->
+    <string name="voice_settings">語音設定</string>
+    <string name="accessibility_settings">無障礙設定</string>
+    <string name="vibration_feedback">震動反饋</string>
+    <string name="screen_reader_support">讀屏支援</string>
+    <string name="gesture_operations">手勢操作</string>
+    <string name="test_and_reset">測試與重置</string>
+    <string name="test_voice">測試語音</string>
+    <string name="reset_settings">重置設定</string>
+    <string name="status_on">開啟</string>
+    <string name="status_off">關閉</string>
+    <string name="vibration_enabled">震動反饋已開啟</string>
+    <string name="vibration_disabled">震動反饋已關閉</string>
+    <string name="screen_reader_enabled">讀屏支援已開啟</string>
+    <string name="screen_reader_disabled">讀屏支援已關閉</string>
+    <string name="gesture_enabled">手勢操作已開啟</string>
+    <string name="gesture_disabled">手勢操作已關閉</string>
+    <string name="testing_voice">正在測試語音設定</string>
+    <string name="reset_settings_title">重置設定</string>
+    <string name="reset_settings_message">確定要重置所有設定為預設值嗎？</string>
+    <string name="settings_reset">設定已重置</string>
+    <string name="reset_cancelled">重置已取消</string>
+    <string name="settings_announcement">正在進入系統設定頁面</string>
+    <string name="settings_unavailable">系統設定功能暫不可用</string>
+    
+    <!-- 底部導航欄 -->
+    <string name="environment_recognition_desc">環境識別</string>
+    <string name="document_currency_desc">文件助手</string>
+    <string name="find_items_desc">尋找物品</string>
+    <string name="travel_assistant_desc">出行協助</string>
+    <string name="settings_desc">系統設定</string>
+    
+    <!-- 緊急設定頁面 -->
+    <string name="emergency_settings_page_title">緊急求助設置</string>
+    <string name="emergency_settings_page_desc">緊急求助設置頁面描述</string>
+    <string name="emergency_setup_complete_title">緊急求助設置完成</string>
+    <string name="emergency_setup_complete_desc">緊急求助設置完成描述</string>
+    <string name="enter_phone_number">輸入電話號碼</string>
+    <string name="enter_phone_number_desc">輸入新的緊急聯絡人電話號碼</string>
+    <string name="back_button_desc_emergency">返回按鈕</string>
+    <string name="add_contact_button_desc">添加緊急聯絡人按鈕</string>
+    <string name="test_emergency_button_desc">測試緊急功能按鈕</string>
+    <string name="setup_complete_button_desc">完成緊急求助設置按鈕</string>
+    <string name="contacts_list_desc">緊急聯絡人列表</string>
+    <string name="error_enter_phone">請輸入電話號碼</string>
+    <string name="error_invalid_phone">電話號碼格式不正確</string>
+    <string name="error_contact_exists">聯絡人已存在</string>
+    <string name="error_add_contact">添加聯絡人失敗</string>
+    <string name="settings_saved">設定已保存</string>
+    <string name="emergency_settings_saved">緊急設置已保存</string>
+    <string name="contact_phone_placeholder">聯絡人電話號碼</string>
+    <string name="remove_button">移除</string>
+    <string name="add_emergency_contact_title">添加緊急聯絡人</string>
+    <string name="add_button">添加</string>
+    <string name="emergency_contacts_list_title">緊急聯絡人</string>
+    <string name="emergency_message_preview">緊急訊息預覽</string>
+    <string name="test_emergency_function">測試緊急功能</string>
+    <string name="speech_rate_display">語速: %d%%</string>
+    <string name="speech_pitch_display">音調: %d%%</string>
+    <string name="speech_volume_display">音量: %d%%</string>
+    <string name="phone_examples">例如：999、+86-138-0000-0000</string>
+    <string name="default_message_label">預設訊息:</string>
+    <string name="test_emergency_assistance">測試緊急求助</string>
+    <string name="test_mode_warning">注意：測試模式不會發送實際的求助信息，只會測試語音和震動功能</string>
+    <string name="complete_setup">完成設置</string>
+    <string name="emergency_message_content">緊急求助！我在使用瞳伴應用時遇到緊急情況，需要立即協助。請盡快聯繫我。</string>
+    <string name="emergency_message_preview_format">預設訊息：\n%s</string>
+    <string name="test_emergency_confirmation">即將測試緊急求助功能，這不會發送實際的求助信息，只是測試語音和震動。是否繼續？</string>
+    <string name="test_emergency_button_complete">✅ 測試緊急求助</string>
+    <string name="test_emergency_button_incomplete">🚨 測試緊急求助</string>
+    <string name="speech_rate_changed_to">語速已調整為 %d%%</string>
+    <string name="speech_pitch_changed_to">音調已調整為 %d%%</string>
+    <string name="speech_volume_changed_to">音量已調整為 %d%%</string>
+    <string name="vibration_feedback_status_on">震動反饋已開啟</string>
+    <string name="vibration_feedback_status_off">震動反饋已關閉</string>
+    <string name="screen_reader_status_on">讀屏支援已開啟，將優化語音播報和內容描述</string>
+    <string name="screen_reader_status_off">讀屏支援已關閉</string>
+    <string name="gesture_operations_status_on">手勢操作已開啟</string>
+    <string name="gesture_operations_status_off">手勢操作已關閉</string>
+    <string name="current_speech_rate">當前語速設定為 %d%%</string>
+    <string name="current_speech_pitch">當前音調設定為 %d%%</string>
+    <string name="current_speech_volume">當前音量設定為 %d%%</string>
+    <string name="current_vibration_status">震動反饋目前為 %s</string>
+    <string name="current_screen_reader_status">讀屏支援目前為 %s</string>
+    <string name="current_gesture_status">手勢操作目前為 %s</string>
+    <string name="status_enabled">開啟</string>
+    <string name="status_disabled">關閉</string>
+    
+    <!-- Gesture Management -->
+    <string name="gesture_management">手勢管理</string>
+    <string name="gesture_management_desc">手勢管理功能，繪製手勢綁定應用功能</string>
+    <string name="draw_gesture_hint">在區域內繪製手勢</string>
+    <string name="gesture_recognized">已識別手勢</string>
+    <string name="gesture_not_recognized">未識別到已保存的手勢</string>
+    <string name="create_gesture">創建手勢</string>
+    <string name="bind_function">綁定功能</string>
+    <string name="delete_gesture">刪除手勢</string>
+    <string name="emergency_settings_desc">緊急求助設置，點擊進入緊急聯絡人設置</string>
+    <string name="system_settings_desc">系統設定，點擊進入語音和無障礙設置</string>
+    <string name="function_selection_area_desc">功能選擇區域，共有四個主要功能</string>
+    <string name="emergency_button_desc">緊急求助按鈕，長按三秒發送求助信息</string>
+    <string name="camera_preview_desc">相機預覽畫面</string>
+    <string name="object_detection_overlay_desc">物體檢測結果覆蓋層，顯示檢測框和標籤</string>
+    <string name="detection_status_desc">偵測狀態提示</string>
+    <string name="detection_results_desc">偵測結果顯示</string>
+    <string name="point_to_objects_instruction">指向周圍物體以開始識別</string>
+    
+    <!-- 通用按鈕 -->
+    <string name="back">返回</string>
+    <string name="confirm">確定</string>
+    <string name="delete">刪除</string>
+    <string name="edit">編輯</string>
+    
+    <!-- High Precision Mode -->
+    <string name="high_precision_mode_on">高精度模式：開啟</string>
+    <string name="high_precision_mode_off">高精度模式：關閉</string>
+    <string name="high_precision_mode_desc">切換高精度檢測模式</string>
+    <string name="high_precision_enabled">高精度模式已啟用，檢測更頻繁</string>
+    <string name="high_precision_disabled">高精度模式已關閉，節省電量</string>
+
+    <!-- Floating Voice Assistant -->
+    <string name="floating_voice_title">語音助手</string>
+    <string name="floating_voice_bubble_desc">浮動語音助手。點一下會讀出用法並打開面板。長按即刻聆聽。可拖動位置。</string>
+    <string name="floating_voice_bubble_intro">畫面有浮動語音助手掣。點一下會讀出用法，並打開語音面板。</string>
+    <string name="floating_voice_bubble_tap_announce">語音助手。點一下打開面板，可以講嘢或者控制應用。長按即刻開始聆聽。可以拖動去另一個位置。</string>
+    <string name="floating_voice_bubble_long_press_announce">而家開始聆聽，請講。</string>
+    <string name="floating_voice_panel_open_announce">語音面板已打開。最上面大掣係開始講嘢。右上角係收起面板。撳開始掣講嘢，撳收起掣關閉面板。</string>
+    <string name="floating_voice_listen_announce">開始聆聽，請講。</string>
+    <string name="floating_voice_stop_announce">已停止聆聽。</string>
+    <string name="floating_voice_expand_announce">打開完整語音助手頁面。</string>
+    <string name="floating_voice_close_announce">語音面板已收起。</string>
+    <string name="floating_voice_tap_to_speak">撳上面個掣開始講嘢</string>
+    <string name="floating_voice_expand">打開完整語音助手頁面</string>
+    <string name="floating_voice_close">收起面板</string>
+    <string name="floating_voice_close_desc">收起語音面板，位於右上角</string>
+    <string name="floating_voice_start_button">開始講嘢</string>
+    <string name="floating_voice_start_button_desc">開始講嘢，位於面板最上方</string>
+    <string name="floating_voice_stop_button">停止聆聽</string>
+    
+</resources>

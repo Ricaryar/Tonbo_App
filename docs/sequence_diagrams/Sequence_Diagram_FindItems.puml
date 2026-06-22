@@ -1,0 +1,44 @@
+@startuml Find_Items_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "FindItemsActivity" as Activity
+participant "Camera" as Camera
+participant "Database" as DB
+
+User -> Activity: Open Find Items Screen
+activate Activity
+
+Activity -> Activity: onCreate()
+Activity -> Camera: setupCamera()
+Camera --> Activity: Camera Ready
+Activity --> User: Show Camera Preview
+
+alt User Marks Item
+    User -> Activity: Click Mark Item Button
+    User -> Activity: Click Capture Button
+    Activity -> Camera: captureImage()
+    Camera --> Activity: Bitmap image
+    User -> Activity: Enter Item Name
+    Activity -> DB: saveItem(name, image)
+    activate DB
+    DB --> Activity: Item Saved
+    deactivate DB
+    Activity --> User: Item Marked Successfully
+else User Finds Item
+    User -> Activity: Click Find Item Button
+    loop Scanning
+        Activity -> Camera: analyzeFrame()
+        Camera --> Activity: Frame Data
+        Activity -> Activity: matchItem(frame)
+        alt Item Found
+            Activity --> User: Announce Item Location
+            break
+        end
+    end
+end
+
+deactivate Activity
+
+@enduml

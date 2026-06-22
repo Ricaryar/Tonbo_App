@@ -1,0 +1,66 @@
+EfficientDet-Lite1 模型驗證報告
+=====================================
+
+文件路徑: C:\Users\charl\Downloads\efficientdet-tflite-lite1-detection-metadata-v1\1.tflite
+文件大小: 5.80 MB
+
+模型結構分析:
+-----------
+
+1. 輸入張量:
+   - 名稱: serving_default_images:0
+   - 形狀: [1, 384, 384, 3]
+   - 數據類型: uint8 (量化模型)
+   - 量化參數: scale=0.0078125, zero_point=127
+   - 結論: ✓ 輸入尺寸 384x384 符合 EfficientDet-Lite1 規格
+
+2. 輸出張量 (共 4 個):
+   - 輸出 [0]: StatefulPartitionedCall:3
+     * 形狀: [1, 25, 4]
+     * 數據類型: float32
+     * 推測: 邊界框 (boxes) - [batch, num_detections, 4]
+   
+   - 輸出 [1]: StatefulPartitionedCall:2
+     * 形狀: [1, 25]
+     * 數據類型: float32
+     * 推測: 置信度分數 (scores) 或類別索引 (classes)
+   
+   - 輸出 [2]: StatefulPartitionedCall:1
+     * 形狀: [1, 25]
+     * 數據類型: float32
+     * 推測: 置信度分數 (scores) 或類別索引 (classes)
+   
+   - 輸出 [3]: StatefulPartitionedCall:0
+     * 形狀: [1]
+     * 數據類型: float32
+     * 推測: 檢測數量 (num_detections)
+
+驗證結果:
+--------
+
+✓ 輸入尺寸符合 EfficientDet-Lite1 規格 (384x384)
+✓ 輸出張量數量符合目標檢測模型 (4 個輸出)
+⚠ 輸出名稱未包含典型關鍵字 (可能是模型轉換時命名不同)
+
+結論:
+----
+
+這個模型很可能是 EfficientDet-Lite1 或類似的目標檢測模型。
+
+特徵符合點:
+1. 輸入尺寸 384x384 是 EfficientDet-Lite1 的標準規格
+2. 輸出結構符合目標檢測模型 (boxes, scores, classes, num_detections)
+3. 模型大小 5.80 MB 符合 EfficientDet-Lite1 的預期大小
+4. 使用量化 (uint8) 輸入，適合移動設備
+
+注意事項:
+1. 輸出名稱是自動生成的 (StatefulPartitionedCall)，不是標準名稱
+2. 需要通過實際測試來確認輸出順序 (boxes, scores, classes 的順序)
+3. 最大檢測數量為 25 個物體
+
+建議:
+----
+1. 可以嘗試在應用中使用此模型
+2. 需要動態檢測輸出張量的順序
+3. 建議進行實際檢測測試以驗證準確性
+

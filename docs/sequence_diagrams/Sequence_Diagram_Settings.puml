@@ -1,0 +1,41 @@
+@startuml Settings_Activity_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "SettingsActivity" as Activity
+participant "TTSManager" as TTS
+participant "VibrationManager" as Vib
+participant "SharedPreferences" as Prefs
+
+User -> Activity: Open Settings
+activate Activity
+
+Activity -> Activity: onCreate()
+Activity -> Prefs: loadSettings()
+Prefs --> Activity: Settings Data
+Activity --> User: Show Settings UI
+
+alt User Adjusts Speech Rate
+    User -> Activity: Adjust Speech Rate SeekBar
+    Activity -> TTS: setSpeechRate(value)
+    TTS --> User: Test Voice Output
+    Activity -> Prefs: saveSettings()
+else User Adjusts Speech Pitch
+    User -> Activity: Adjust Speech Pitch SeekBar
+    Activity -> TTS: setSpeechPitch(value)
+    Activity -> Prefs: saveSettings()
+else User Toggles Vibration
+    User -> Activity: Toggle Vibration Switch
+    Activity -> Vib: setVibrationEnabled(value)
+    Activity -> Prefs: saveSettings()
+else User Resets Settings
+    User -> Activity: Click Reset Button
+    Activity -> Prefs: resetToDefault()
+    Activity -> Activity: loadSettings()
+    Activity --> User: Settings Reset
+end
+
+deactivate Activity
+
+@enduml

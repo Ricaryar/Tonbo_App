@@ -1,0 +1,276 @@
+@startuml Overall_Class_Diagram
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam class {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+' Base Classes
+abstract class BaseAccessibleActivity {
+    # TTSManager ttsManager
+    # VibrationManager vibrationManager
+    # LocaleManager localeManager
+    # String currentLanguage
+    + onCreate(Bundle): void
+    + announceInfo(String): void
+    + announceError(String): void
+    + handleVoiceCommand(): void
+    + goToHome(): void
+    --
+    File: BaseAccessibleActivity.java
+    Template Method Pattern
+}
+
+' Activity Classes
+class MainActivity extends BaseAccessibleActivity {
+    - EmergencyManager emergencyManager
+    - ViewPager2 viewPager
+    + onCreate(Bundle): void
+    + toggleLanguage(): void
+    - triggerEmergencyCall(): void
+    --
+    File: MainActivity.java
+    Emergency: 3s long press
+}
+
+class RealAIDetectionActivity extends BaseAccessibleActivity {
+    - YoloDetector yoloDetector
+    - NightModeOptimizer nightModeOptimizer
+    - PreviewView previewView
+    + onCreate(Bundle): void
+    - analyzeImage(ImageProxy): void
+    - startDetection(): void
+    --
+    File: RealAIDetectionActivity.java
+    Real-time object detection
+}
+
+class DocumentCurrencyActivity extends BaseAccessibleActivity {
+    - OCRHelper ocrHelper
+    - CurrencyDetector currencyDetector
+    + onCreate(Bundle): void
+    - readDocument(): void
+    - recognizeCurrency(): void
+    --
+    File: DocumentCurrencyActivity.java
+    OCR + Currency detection
+}
+
+class VoiceCommandActivity extends BaseAccessibleActivity {
+    - VoiceCommandManager commandManager
+    - StreamingVoiceAI streamingAI
+    - ASRManager asrManager
+    + onCreate(Bundle): void
+    - toggleStreamingMode(): void
+    - executeCommand(String): void
+    --
+    File: VoiceCommandActivity.java
+    Continuous conversation
+}
+
+class SettingsActivity extends BaseAccessibleActivity {
+    - SeekBar speechRateSeekBar
+    + onCreate(Bundle): void
+    - saveSettings(): void
+    --
+    File: SettingsActivity.java
+    Speech parameters
+}
+
+class LoginActivity extends BaseAccessibleActivity {
+    - UserManager userManager
+    + onCreate(Bundle): void
+    - login(): void
+    --
+    File: LoginActivity.java
+    User authentication
+}
+
+' Manager Classes (Singleton)
+class TTSManager {
+    {static} + getInstance(Context): TTSManager
+    + speak(String, String, boolean): void
+    + setLanguage(String): void
+    + setSpeechRate(float): void
+    --
+    File: TTSManager.java
+    Singleton Pattern
+    Cantonese/Mandarin/English
+}
+
+class VibrationManager {
+    {static} + getInstance(Context): VibrationManager
+    + vibrateClick(): void
+    + vibrateEmergencyPattern(): void
+    --
+    File: VibrationManager.java
+    Singleton Pattern
+}
+
+class LocaleManager {
+    {static} + getInstance(Context): LocaleManager
+    + switchLanguage(String): void
+    + getCurrentLanguage(): String
+    --
+    File: LocaleManager.java
+    Singleton Pattern
+}
+
+class UserManager {
+    {static} + getInstance(Context): UserManager
+    + isUserLoggedIn(): boolean
+    + setUserLoggedIn(boolean): void
+    --
+    File: UserManager.java
+    Singleton Pattern
+}
+
+class EmergencyManager {
+    {static} + getInstance(Context): EmergencyManager
+    + triggerEmergencyAlert(): void
+    - callEmergencyService(): void
+    --
+    File: EmergencyManager.java
+    Singleton Pattern
+    Direct 999 dialing
+}
+
+class ConversationManager {
+    {static} + getInstance(): ConversationManager
+    + addMessage(String, String): void
+    + getContext(): List<ConversationTurn>
+    --
+    File: ConversationManager.java
+    Singleton Pattern
+    LLM context management
+}
+
+' Detector Classes
+class YoloDetector {
+    - Interpreter interpreter
+    + detect(ImageProxy): List<DetectionResult>
+    + imageProxyToBitmap(ImageProxy): Bitmap
+    --
+    File: YoloDetector.java
+    TensorFlow Lite
+    640x640 input, 80 classes
+}
+
+class ObjectDetectorHelper {
+    - YoloDetector yoloDetector
+    + processDetectionResults(List): List
+    --
+    File: ObjectDetectorHelper.java
+    Multi-frame fusion
+}
+
+class OCRHelper {
+    - TextRecognition textRecognition
+    + recognizeText(ImageProxy): Task<String>
+    --
+    File: OCRHelper.java
+    Google ML Kit
+}
+
+class CurrencyDetector {
+    + detectCurrency(Bitmap): String
+    --
+    File: CurrencyDetector.java
+    HKD recognition
+}
+
+' AI/ML Classes
+class NightModeOptimizer {
+    - boolean isNightModeActive
+    + inferAndUpdateMode(float): boolean
+    + getAdjustedConfidenceThreshold(): float
+    --
+    File: NightModeOptimizer.java
+    Confidence-based inference
+}
+
+' LLM Classes
+class LLMClient {
+    - LLMConfig config
+    + sendMessage(String, List): String
+    --
+    File: LLMClient.java
+    DeepSeek/GLM-4-Flash
+}
+
+class LLMConfig {
+    - String apiKey
+    - String model
+    + getApiKey(): String
+    --
+    File: LLMConfig.java
+    API configuration
+}
+
+' Voice Processing Classes
+class VoiceCommandManager {
+    - ASRManager asrManager
+    + processCommand(String): String
+    + fuzzyMatch(String): String
+    --
+    File: VoiceCommandManager.java
+    Fuzzy matching
+}
+
+class ASRManager {
+    - SpeechRecognizer speechRecognizer
+    + startListening(): void
+    + stopListening(): void
+    --
+    File: ASRManager.java
+    Multiple engines
+}
+
+class StreamingVoiceAI {
+    - ConversationManager conversationManager
+    - LLMClient llmClient
+    + startContinuousConversation(): void
+    + stopContinuousConversation(): void
+    --
+    File: StreamingVoiceAI.java
+    Continuous mode
+    Sleep mode (30s)
+}
+
+' Relationships
+BaseAccessibleActivity *-- TTSManager
+BaseAccessibleActivity *-- VibrationManager
+BaseAccessibleActivity *-- LocaleManager
+
+MainActivity --> EmergencyManager
+RealAIDetectionActivity --> YoloDetector
+RealAIDetectionActivity --> NightModeOptimizer
+DocumentCurrencyActivity --> OCRHelper
+DocumentCurrencyActivity --> CurrencyDetector
+VoiceCommandActivity --> VoiceCommandManager
+VoiceCommandActivity --> StreamingVoiceAI
+LoginActivity --> UserManager
+
+YoloDetector --> ObjectDetectorHelper
+StreamingVoiceAI --> ConversationManager
+StreamingVoiceAI --> LLMClient
+LLMClient --> LLMConfig
+VoiceCommandManager --> ASRManager
+
+note right of BaseAccessibleActivity
+  **Template Method Pattern**
+  Common accessibility support
+end note
+
+note right of TTSManager
+  **Singleton Pattern**
+  Thread-safe initialization
+end note
+
+note right of EmergencyManager
+  **Singleton Pattern**
+  Single function: Direct 999
+end note
+
+@enduml

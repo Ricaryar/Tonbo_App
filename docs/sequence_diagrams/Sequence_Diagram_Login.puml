@@ -1,0 +1,46 @@
+@startuml Login_Activity_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "LoginActivity" as Login
+participant "UserManager" as UserMgr
+participant "MainActivity" as Main
+
+User -> Login: Open Login Screen
+activate Login
+
+Login -> Login: onCreate()
+Login -> Login: initViews()
+Login --> User: Show Login Form
+
+alt User Selects Login
+    User -> Login: Click Laogin Button
+    Login -> Login: attemptLogin()
+    Login -> Login: validateInput()
+    
+    alt Input Valid
+        Login -> UserMgr: validateCredentials()
+        activate UserMgr
+        UserMgr --> Login: boolean result
+        deactivate UserMgr
+        
+        alt Login Success
+            Login -> Main: startActivity(MainActivity)
+            Login -> Login: finish()
+        else Login Failed
+            Login --> User: Show Error Message
+        end
+    else Input Invalid
+        Login --> User: Show Validation Error
+    end
+else User Selects Guest Mode
+    User -> Login: Click Guest Button
+    Login -> UserMgr: setGuestMode(true)
+    Login -> Main: startActivity(MainActivity)
+    Login -> Login: finish()
+end
+
+deactivate Login
+
+@enduml

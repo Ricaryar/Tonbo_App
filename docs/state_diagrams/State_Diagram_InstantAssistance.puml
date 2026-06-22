@@ -1,0 +1,56 @@
+@startuml Instant_Assistance_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> Ready : Setup Complete
+
+Ready --> CheckingConnection : checkConnectionStatus()
+CheckingConnection --> Connected : Connection Available
+CheckingConnection --> Disconnected : Connection Unavailable
+
+Connected --> QuickCallRequested : Quick Call Button Clicked
+Connected --> QuickMessageRequested : Quick Message Button Clicked
+Connected --> VideoCallRequested : Video Call Button Clicked
+
+QuickCallRequested --> RequestingCallPermission : Check Call Permission
+RequestingCallPermission --> PermissionDenied : Permission Denied
+RequestingCallPermission --> PermissionGranted : Permission Granted
+
+PermissionDenied --> RequestingCallPermission : Request Permission
+PermissionGranted --> Dialing : Initiate Call
+Dialing --> Calling : Call Connected
+Calling --> CallEnded : Call Finished
+CallEnded --> Connected : Return
+
+QuickMessageRequested --> RequestingSMSPermission : Check SMS Permission
+RequestingSMSPermission --> SMSPermissionDenied : Permission Denied
+RequestingSMSPermission --> SMSPermissionGranted : Permission Granted
+
+SMSPermissionDenied --> RequestingSMSPermission : Request Permission
+SMSPermissionGranted --> SendingSMS : Send SMS
+SendingSMS --> SMSSent : SMS Sent
+SMSSent --> Connected : Return
+
+VideoCallRequested --> RequestingCameraPermission : Check Camera Permission
+RequestingCameraPermission --> CameraPermissionDenied : Permission Denied
+RequestingCameraPermission --> CameraPermissionGranted : Permission Granted
+
+CameraPermissionDenied --> RequestingCameraPermission : Request Permission
+CameraPermissionGranted --> VideoCalling : Start Video Call
+VideoCalling --> VideoCallEnded : Call Finished
+VideoCallEnded --> Connected : Return
+
+Disconnected --> Ready : Show Disconnected Message
+
+Ready --> Paused : onPause()
+Paused --> Ready : onResume()
+
+Ready --> [*] : onDestroy()
+
+@enduml

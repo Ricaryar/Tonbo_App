@@ -1,0 +1,46 @@
+@startuml Main_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> HomeScreen : Setup Complete
+
+HomeScreen --> EnvironmentRecognition : Environment Button Clicked
+HomeScreen --> DocumentCurrency : Document Button Clicked
+HomeScreen --> VoiceCommand : Voice Button Clicked
+HomeScreen --> FindItems : Find Items Button Clicked
+HomeScreen --> TravelAssistant : Travel Button Clicked
+HomeScreen --> InstantAssistance : Instant Assistance Button Clicked
+HomeScreen --> GestureManagement : Gesture Button Clicked
+HomeScreen --> Settings : Settings Button Clicked
+HomeScreen --> LanguageSwitching : Language Button Clicked
+
+HomeScreen --> EmergencyCountdown : Emergency Button Long Press (3s)
+EmergencyCountdown --> EmergencyDialing : 3 Seconds Elapsed
+EmergencyDialing --> HomeScreen : Call Initiated
+
+HomeScreen --> ShakeDetection : Shake Detected
+ShakeDetection --> HomeScreen : Shake Handled
+
+LanguageSwitching --> HomeScreen : Language Updated
+
+EnvironmentRecognition --> HomeScreen : Return
+DocumentCurrency --> HomeScreen : Return
+VoiceCommand --> HomeScreen : Return
+FindItems --> HomeScreen : Return
+TravelAssistant --> HomeScreen : Return
+InstantAssistance --> HomeScreen : Return
+GestureManagement --> HomeScreen : Return
+Settings --> HomeScreen : Return
+
+HomeScreen --> Paused : onPause()
+Paused --> HomeScreen : onResume()
+
+HomeScreen --> [*] : onDestroy()
+
+@enduml

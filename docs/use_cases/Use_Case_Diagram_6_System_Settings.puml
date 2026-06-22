@@ -1,0 +1,97 @@
+@startuml System_Settings_Language_Use_Cases
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam usecase {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+skinparam actor {
+    BackgroundColor #FFF9C4
+    BorderColor #F57F17
+}
+
+left to right direction
+
+actor "Visually Impaired\nUser" as User
+actor "System\n(Storage)" as System
+
+package "System Settings" {
+    usecase "Open Settings\nScreen" as SET1
+    usecase "Adjust Speech\nRate" as SET2
+    usecase "Adjust Speech\nPitch" as SET3
+    usecase "Adjust Speech\nVolume" as SET4
+    usecase "Toggle Vibration\nFeedback" as SET5
+    usecase "Toggle Screen\nReader" as SET6
+    usecase "Toggle Gesture\nControls" as SET7
+    usecase "Test Voice\nSettings" as SET8
+    usecase "Save Settings" as SET9
+    usecase "Load Settings" as SET10
+    usecase "Reset to Default\nSettings" as SET11
+    usecase "Apply Settings\nImmediately" as SET12
+    usecase "Provide Voice\nConfirmation" as SET13
+}
+
+package "Language Switch" {
+    usecase "Tap Language\nSwitch Button" as LANG1
+    usecase "Cycle Through\nLanguages" as LANG2
+    usecase "Update Locale\nManager" as LANG3
+    usecase "Update UI Text" as LANG4
+    usecase "Update TTS\nLanguage" as LANG5
+    usecase "Save Language\nPreference" as LANG6
+    usecase "Announce Current\nLanguage" as LANG7
+    usecase "Update All\nActivities" as LANG8
+    usecase "Reload Resources" as LANG9
+}
+
+package "Settings Persistence" {
+    usecase "Store in\nSharedPreferences" as PERS1
+    usecase "Retrieve from\nSharedPreferences" as PERS2
+    usecase "Validate Settings\nValues" as PERS3
+}
+
+User --> SET1
+User --> SET2
+User --> SET3
+User --> SET4
+User --> SET5
+User --> SET6
+User --> SET7
+User --> SET8
+User --> SET11
+User --> LANG1
+
+SET1 ..> SET10 : <<include>>
+SET2 ..> SET12 : <<include>>
+SET3 ..> SET12 : <<include>>
+SET4 ..> SET12 : <<include>>
+SET5 ..> SET12 : <<include>>
+SET6 ..> SET12 : <<include>>
+SET7 ..> SET12 : <<include>>
+SET2 ..> SET9 : <<include>>
+SET3 ..> SET9 : <<include>>
+SET4 ..> SET9 : <<include>>
+SET5 ..> SET9 : <<include>>
+SET6 ..> SET9 : <<include>>
+SET7 ..> SET9 : <<include>>
+SET9 ..> SET13 : <<include>>
+SET8 ..> SET12 : <<include>>
+SET11 ..> SET9 : <<include>>
+
+LANG1 ..> LANG2 : <<include>>
+LANG2 ..> LANG3 : <<include>>
+LANG3 ..> LANG4 : <<include>>
+LANG3 ..> LANG5 : <<include>>
+LANG3 ..> LANG6 : <<include>>
+LANG3 ..> LANG7 : <<include>>
+LANG3 ..> LANG8 : <<include>>
+LANG4 ..> LANG9 : <<include>>
+
+SET9 ..> PERS1 : <<include>>
+SET10 ..> PERS2 : <<include>>
+SET9 ..> PERS3 : <<include>>
+LANG6 ..> PERS1 : <<include>>
+
+System --> PERS1
+System --> PERS2
+
+@enduml

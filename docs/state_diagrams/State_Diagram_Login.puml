@@ -1,0 +1,34 @@
+@startuml Login_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> UserTypeSelection : initViews()
+UserTypeSelection --> LoginForm : User Type Selected
+
+LoginForm --> Validating : Login Button Clicked
+LoginForm --> Registering : Register Button Clicked
+LoginForm --> GuestMode : Guest Button Clicked
+LoginForm --> UserTypeSelection : Back Button Clicked
+
+Validating --> ValidatingInput : Validate Email/Password
+ValidatingInput --> LoggingIn : Input Valid
+ValidatingInput --> LoginForm : Input Invalid
+
+LoggingIn --> LoginSuccess : Authentication Success
+LoggingIn --> LoginError : Authentication Failed
+
+LoginSuccess --> MainScreen : Navigate to MainActivity
+GuestMode --> MainScreen : Navigate to MainActivity
+Registering --> MainScreen : Registration Complete
+
+LoginError --> LoginForm : Show Error Message
+
+MainScreen --> [*] : Activity Finished
+
+@enduml

@@ -1,0 +1,87 @@
+@startuml Core_Features_Use_Cases
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam usecase {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+skinparam actor {
+    BackgroundColor #FFF9C4
+    BorderColor #F57F17
+}
+
+left to right direction
+
+actor "Visually Impaired\nUser" as User
+
+package "Environment Recognition" {
+    usecase "Detect Objects" as ER1
+    usecase "Get Position\nDescription" as ER2
+    usecase "Analyze Color &\nLighting" as ER3
+    usecase "Night Mode\nActivation" as ER4
+    usecase "Display Results" as ER5
+    
+    ER1 ..> ER2 : <<include>>
+    ER1 ..> ER3 : <<include>>
+    ER1 ..> ER5 : <<include>>
+    ER1 ..> ER4 : <<extend>>
+}
+
+package "Document & Currency Reading" {
+    usecase "Read Document" as DR1
+    usecase "Recognize Currency" as DR2
+    usecase "Read Text Aloud" as DR3
+    
+    DR1 ..> DR3 : <<include>>
+    DR2 ..> DR3 : <<include>>
+}
+
+package "Emergency Assistance" {
+    usecase "Trigger Emergency\nCall" as EA1
+    usecase "Long Press\nActivation" as EA2
+    
+    EA2 ..> EA1 : <<include>>
+}
+
+package "Voice Command" {
+    usecase "Speak Command" as VC1
+    usecase "Continuous\nConversation" as VC2
+    usecase "LLM Interaction" as VC3
+    
+    VC1 ..> VC2 : <<extend>>
+    VC2 ..> VC3 : <<extend>>
+}
+
+User --> ER1
+User --> DR1
+User --> DR2
+User --> EA2
+User --> VC1
+
+note right of ER1
+  Java Files:
+  RealAIDetectionActivity.java
+  ObjectDetectorHelper.java
+  YoloDetector.java
+end note
+
+note right of DR1
+  Java Files:
+  DocumentCurrencyActivity.java
+  OCRHelper.java
+end note
+
+note right of EA1
+  Java Files:
+  EmergencyManager.java
+  MainActivity.java
+end note
+
+note right of VC1
+  Java Files:
+  VoiceCommandActivity.java
+  VoiceCommandManager.java
+  LLMClient.java
+end note
+
+@enduml

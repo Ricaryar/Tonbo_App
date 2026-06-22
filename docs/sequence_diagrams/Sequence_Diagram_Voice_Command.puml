@@ -1,0 +1,66 @@
+@startuml Voice_Command_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "VoiceCommand\nActivity" as Activity
+participant "ASRManager" as ASR
+participant "VoiceCommand\nManager" as VCM
+participant "LLMClient" as LLM
+participant "Conversation\nManager" as ConvMgr
+participant "TTSManager" as TTS
+participant "Target\nActivity" as Target
+
+User -> Activity: Speak Command
+activate Activity
+
+Activity -> ASR: Start Listening
+ASR -> ASR: Recognize Speech
+ASR --> Activity: Recognized Text
+
+Activity -> VCM: processCommand(text)
+activate VCM
+
+VCM -> VCM: Preprocess Text
+VCM -> VCM: Fuzzy Matching
+VCM --> Activity: Command Identified
+
+alt Command Found
+    Activity -> TTS: Confirm Command
+    TTS --> User: Audio Feedback
+    
+    Activity -> Target: Execute Command
+    activate Target
+    Target --> User: Function Opened
+    deactivate Target
+else LLM Mode Enabled
+    Activity -> ConvMgr: Get Context
+    ConvMgr --> Activity: Conversation History
+    
+    Activity -> LLM: Generate Response
+    activate LLM
+    LLM --> Activity: AI Response
+    deactivate LLM
+    
+    Activity -> TTS: Speak Response
+    TTS --> User: AI Response Audio
+end
+
+deactivate VCM
+deactivate Activity
+
+note right of VCM
+  Java Files:
+  VoiceCommandManager.java
+  VoiceCommandBuilder.java
+  Fuzzy matching algorithm
+end note
+
+note right of LLM
+  Java Files:
+  LLMClient.java
+  LLMConfig.java
+  ConversationResponseGenerator.java
+end note
+
+@enduml

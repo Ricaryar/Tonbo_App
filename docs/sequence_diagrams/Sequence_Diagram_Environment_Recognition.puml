@@ -1,0 +1,154 @@
+@startuml Environment_Recognition_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "RealAIDetectionActivity\n(app/src/main/java/com/example/tonbo_app/RealAIDetectionActivity.java)" as Activity
+participant "CameraX\n(androidx.camera.core)" as CameraX
+participant "YoloDetector\n(app/src/main/java/com/example/tonbo_app/YoloDetector.java)" as YoloDetector
+participant "ObjectDetectorHelper\n(app/src/main/java/com/example/tonbo_app/ObjectDetectorHelper.java)" as Detector
+participant "NightModeOptimizer\n(app/src/main/java/com/example/tonbo_app/NightModeOptimizer.java)" as NightMode
+participant "TTSManager\n(Singleton)\n(app/src/main/java/com/example/tonbo_app/TTSManager.java)" as TTS
+participant "SpatialDescriptionGenerator\n(app/src/main/java/com/example/tonbo_app/SpatialDescriptionGenerator.java)" as Spatial
+participant "DetectionOverlayView\n(app/src/main/java/com/example/tonbo_app/DetectionOverlayView.java)" as Overlay
+participant "AppConstants\n(app/src/main/java/com/example/tonbo_app/AppConstants.java)" as Constants
+
+User -> Activity: Open Environment Recognition\n(startEnvironmentActivity())
+activate Activity
+
+Activity -> Activity: onCreate(Bundle savedInstanceState)
+Activity -> Activity: checkCameraPermission()\n(ContextCompat.checkSelfPermission())
+Activity -> Activity: initializeCamera()\n(ProcessCameraProvider.getInstance())
+Activity -> CameraX: ProcessCameraProvider.getInstance(this)
+CameraX -> CameraX: setupCamera()\n(CameraSelector, ImageAnalysis, Preview)
+CameraX --> Activity: Camera Ready\n(cameraProvider.bindToLifecycle())
+
+Activity -> Activity: initDetector()\n(new YoloDetector(this))
+Activity -> YoloDetector: YoloDetector(Context context)
+YoloDetector -> YoloDetector: loadModel()\n(Load TensorFlow Lite model)
+YoloDetector --> Activity: Detector Initialized
+
+Activity -> Activity: initNightModeOptimizer()\n(new NightModeOptimizer())
+NightMode --> Activity: NightModeOptimizer Initialized
+
+Activity -> Activity: setupImageAnalysis()\n(ImageAnalysis.setAnalyzer())
+
+loop Every Frame\n(frameCounter % 3 == 0)
+    CameraX -> Activity: analyze(ImageProxy image)\n(ImageAnalysis.Analyzer.analyze())
+    activate Activity
+    
+    Activity -> Activity: frameCounter.getAndIncrement()
+    Activity -> Activity: calculateAverageConfidence(results)\n(Calculate from previous results)
+    
+    Activity -> NightMode: inferAndUpdateMode(float averageConfidence)\n(NightModeOptimizer.inferAndUpdateMode())
+    activate NightMode
+    NightMode -> NightMode: Check CONFIDENCE_INFER_LOW_LIGHT (= 0.25f)\nCheck CONFIDENCE_INFER_NORMAL_LIGHT (= 0.50f)
+    NightMode -> NightMode: Update lowLightFrameCount / normalLightFrameCount
+    NightMode -> NightMode: Check STABILITY_FRAME_COUNT (= 5)
+    NightMode --> Activity: isNightModeActive(): boolean
+    deactivate NightMode
+    
+    Activity -> Activity: Check if night mode just activated
+    alt Night Mode Activated
+        Activity -> TTS: announceInfo(lightingDesc)\n("检测到低光环境，已激活夜间模式")
+        TTS --> User: Voice: "Night mode activated"
+    end
+    
+    Activity -> YoloDetector: detect(ImageProxy image)\n(YoloDetector.detect())
+    activate YoloDetector
+    YoloDetector -> YoloDetector: imageProxyToBitmap(ImageProxy)\n(Convert YUV_420_888 to Bitmap)
+    YoloDetector -> YoloDetector: preprocessImage(Bitmap)\n(Resize to model input size)
+    YoloDetector -> YoloDetector: runModelInference(ByteBuffer)\n(TensorFlow Lite Interpreter)
+    YoloDetector -> YoloDetector: postprocessResults(float[])\n(Parse YOLO output, NMS)
+    YoloDetector --> Activity: List<DetectionResult> results
+    deactivate YoloDetector
+    
+    Activity -> Detector: processDetectionResults(results)\n(ObjectDetectorHelper.processDetectionResults())
+    activate Detector
+    Detector -> Detector: applyMultiFrameFusion()\n(STABILITY_FRAME_COUNT = 2)
+    Detector -> Detector: filterByConfidence()\n(CONFIDENCE_THRESHOLD from AppConstants)
+    Detector -> Detector: filterUnreasonableDetections()\n(Remove indoor-irrelevant objects)
+    Detector --> Activity: List<DetectionResult> filteredResults
+    deactivate Detector
+    
+    Activity -> Activity: adjustResultsForRotation(results,\nimage.getWidth(), image.getHeight(),\nrotationDegrees)
+    
+    Activity -> Activity: filterUnreasonableDetections(adjustedResults,\nconfidenceThreshold, scoreThreshold)\n(Use night mode adjusted thresholds if active)
+    
+    Activity -> Activity: Limit to top 2 results\n(displayResults = filteredResults.subList(0, 2))
+    
+    Activity -> Activity: runOnUiThread(() -> { ... })
+    Activity -> Overlay: setSourceImageSize(image.getWidth(),\nimage.getHeight())
+    Activity -> Overlay: setLanguage(currentLanguage)
+    Activity -> Overlay: updateDetectionResults(displayResults)
+    Overlay -> Overlay: drawDetectionResults()\n(Draw bounding boxes and labels)
+    Overlay --> User: Visual Display Updated
+    
+    Activity -> Spatial: generatePositionDescription(result,\nimageWidth, imageHeight)\n(SpatialDescriptionGenerator.generatePositionDescription())
+    activate Spatial
+    Spatial -> Spatial: calculatePosition(boundingBox, imageWidth, imageHeight)\n(Determine left/center/right)
+    Spatial --> Activity: String positionDesc\n("left", "center", "right")
+    deactivate Spatial
+    
+    Activity -> Activity: announceDetectionResults(displayResults)\n(RealAIDetectionActivity.announceDetectionResults())
+    Activity -> TTS: speak(announcementText, announcementTextEn, false)\n(TTSManager.speak())
+    TTS --> User: Voice Output: "Detected: [object] on [position]"
+    
+    Activity -> Activity: image.close()\n(Release ImageProxy)
+    deactivate Activity
+end
+
+note right of Activity
+  **RealAIDetectionActivity.java**
+  - yoloDetector: YoloDetector
+  - nightModeOptimizer: NightModeOptimizer
+  - frameCounter: AtomicInteger
+  - LIGHTING_ANALYSIS_FREQUENCY = 15
+  - analyzeImage(ImageProxy): void
+  - announceDetectionResults(List): void
+  - filterUnreasonableDetections(List, float, float): List
+  - adjustResultsForRotation(List, int, int, int): List
+end note
+
+note right of YoloDetector
+  **YoloDetector.java**
+  - Model: TensorFlow Lite
+  - Input: 640x640 RGB image
+  - Output: YOLO format detections
+  - detect(ImageProxy): List<DetectionResult>
+  - imageProxyToBitmap(ImageProxy): Bitmap
+  - preprocessImage(Bitmap): ByteBuffer
+  - runModelInference(ByteBuffer): float[]
+  - postprocessResults(float[]): List<DetectionResult>
+end note
+
+note right of Detector
+  **ObjectDetectorHelper.java**
+  - STABILITY_FRAME_COUNT = 2
+  - Multi-frame fusion algorithm
+  - detectionStability: Map<String, Integer>
+  - processDetectionResults(List): List
+  - applyMultiFrameFusion(): void
+  - filterByConfidence(float): List
+end note
+
+note right of NightMode
+  **NightModeOptimizer.java**
+  - CONFIDENCE_INFER_LOW_LIGHT = 0.25f
+  - CONFIDENCE_INFER_NORMAL_LIGHT = 0.50f
+  - STABILITY_FRAME_COUNT = 5
+  - inferAndUpdateMode(float): boolean
+  - isNightModeActive(): boolean
+  - getAdjustedConfidenceThreshold(): float
+  - getAdjustedScoreThreshold(): float
+end note
+
+note right of Constants
+  **AppConstants.java**
+  - CONFIDENCE_THRESHOLD = 0.5f
+  - SCORE_THRESHOLD = 0.3f
+  - DETECTION_BOX_DISPLAY_DURATION_MS = 2000
+  - Frame skip: Every 3 frames
+end note
+
+@enduml

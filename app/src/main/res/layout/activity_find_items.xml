@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    tools:context=".FindItemsActivity">
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start|center_vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/button_square_background"
+            android:backgroundTint="@null"
+            android:contentDescription="@string/back_button_desc"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/page_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/find_items_title"
+            android:textColor="@color/text_primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:contentDescription="@string/find_items_title_desc" />
+    </LinearLayout>
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/camera_preview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/camera_preview_desc"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.45" />
+
+    <ImageView
+        android:id="@+id/captured_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:contentDescription="已定格的画面"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.45" />
+
+    <TextView
+        android:id="@+id/status_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="请将手机对准前方，点击底部按钮拍照"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/camera_preview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_capture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        android:text="📸 拍照定格"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:background="@drawable/button_square_background"
+        android:backgroundTint="#4CAF50"
+        android:textColor="@color/white"
+        android:contentDescription="拍照定格按钮，点击拍下当前画面"
+        app:layout_constraintTop_toBottomOf="@id/status_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layout_action_buttons"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/status_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btn_retake"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="🔄 重拍"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_square_background"
+            android:backgroundTint="#757575"
+            android:textColor="@color/white"
+            android:contentDescription="重新拍照按钮" />
+
+        <Button
+            android:id="@+id/btn_voice_ask"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="🎤 提问找物"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_square_background"
+            android:backgroundTint="#FF9800"
+            android:textColor="@color/white"
+            android:contentDescription="语音提问按钮，点击后说出你想寻找的物品" />
+        <Button
+            android:id="@+id/btn_memory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="記憶對話"
+            android:contentDescription="啟動記憶對話，詢問過去識別過的物品" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

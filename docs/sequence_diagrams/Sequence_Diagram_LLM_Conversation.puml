@@ -1,0 +1,49 @@
+@startuml LLM_Conversation_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "VoiceCommandActivity" as Activity
+participant "StreamingVoiceAI" as StreamingAI
+participant "ASRManager" as ASR
+participant "LLMClient" as LLM
+participant "TTSManager" as TTS
+
+User -> Activity: Activate Continuous Mode
+activate Activity
+
+Activity -> StreamingAI: startContinuousConversation()
+activate StreamingAI
+
+StreamingAI -> ASR: startListening()
+ASR --> User: Listening Started
+
+loop Continuous Conversation
+    User -> ASR: Speak Input
+    ASR -> StreamingAI: onFinalText(userInput)
+    
+    StreamingAI -> LLM: sendChatMessage(userInput)
+    activate LLM
+    LLM --> StreamingAI: AI Response
+    deactivate LLM
+    
+    StreamingAI -> TTS: speak(response)
+    TTS --> User: Voice Output
+    
+    alt 30s Silence
+        StreamingAI -> StreamingAI: Enter Sleep Mode
+        StreamingAI --> User: Sleep Mode Activated
+        break
+    end
+    
+    alt Stop Command
+        StreamingAI -> Activity: onStopRequested()
+        break
+    end
+end
+
+StreamingAI -> Activity: stopContinuousConversation()
+deactivate StreamingAI
+deactivate Activity
+
+@enduml

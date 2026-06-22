@@ -1,0 +1,109 @@
+@startuml Voice_Command_Conversation_Use_Cases
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam usecase {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+skinparam actor {
+    BackgroundColor #FFF9C4
+    BorderColor #F57F17
+}
+
+left to right direction
+
+actor "Visually Impaired\nUser" as User
+actor "ASR Engine" as ASR
+actor "LLM Service" as LLM
+
+package "Voice Command" {
+    usecase "Open Voice\nCommand" as VC1
+    usecase "Start Speech\nRecognition" as VC2
+    usecase "Capture Audio\nInput" as VC3
+    usecase "Preprocess Text" as VC4
+    usecase "Fuzzy Match\nCommand" as VC5
+    usecase "Execute Command" as VC6
+    usecase "Provide Audio\nFeedback" as VC7
+    usecase "Handle Command\nError" as VC8
+    usecase "Stop Recognition" as VC9
+}
+
+package "Continuous Conversation" {
+    usecase "Activate Continuous\nMode" as CC1
+    usecase "Start Continuous\nListening" as CC2
+    usecase "Process User\nInput" as CC3
+    usecase "Manage Conversation\nContext" as CC4
+    usecase "Generate AI\nResponse" as CC5
+    usecase "Speak AI Response" as CC6
+    usecase "Enter Sleep Mode" as CC7
+    usecase "Wake Up from\nSleep" as CC8
+    usecase "Exit Continuous\nMode" as CC9
+    usecase "Handle Stop\nCommand" as CC10
+}
+
+package "LLM Integration" {
+    usecase "Check LLM\nAvailability" as LLM1
+    usecase "Send Request to\nLLM API" as LLM2
+    usecase "Receive LLM\nResponse" as LLM3
+    usecase "Process LLM\nResponse" as LLM4
+    usecase "Update Conversation\nHistory" as LLM5
+    usecase "Handle LLM\nError" as LLM6
+}
+
+package "ASR Processing" {
+    usecase "Initialize ASR\nEngine" as ASR1
+    usecase "Start Listening" as ASR2
+    usecase "Process Partial\nResults" as ASR3
+    usecase "Process Final\nResults" as ASR4
+    usecase "Handle Recognition\nError" as ASR5
+}
+
+User --> VC1
+User --> VC2
+User --> VC6
+User --> CC1
+User --> CC9
+User --> CC8
+
+VC1 ..> VC2 : <<include>>
+VC2 ..> VC3 : <<include>>
+VC3 ..> VC4 : <<include>>
+VC4 ..> VC5 : <<include>>
+VC5 ..> VC6 : <<include>>
+VC6 ..> VC7 : <<include>>
+VC5 ..> VC8 : <<extend>>
+VC2 ..> VC9 : <<extend>>
+
+CC1 ..> CC2 : <<include>>
+CC2 ..> CC3 : <<include>>
+CC3 ..> CC4 : <<include>>
+CC4 ..> CC5 : <<include>>
+CC5 ..> CC6 : <<include>>
+CC2 ..> CC7 : <<extend>>
+CC7 ..> CC8 : <<extend>>
+CC3 ..> CC10 : <<extend>>
+CC10 ..> CC9 : <<include>>
+
+CC5 ..> LLM1 : <<include>>
+LLM1 ..> LLM2 : <<include>>
+LLM2 ..> LLM3 : <<include>>
+LLM3 ..> LLM4 : <<include>>
+LLM4 ..> LLM5 : <<include>>
+LLM2 ..> LLM6 : <<extend>>
+
+VC2 ..> ASR1 : <<include>>
+CC2 ..> ASR1 : <<include>>
+ASR1 ..> ASR2 : <<include>>
+ASR2 ..> ASR3 : <<include>>
+ASR3 ..> ASR4 : <<include>>
+ASR2 ..> ASR5 : <<extend>>
+
+ASR --> ASR2
+ASR --> ASR3
+ASR --> ASR4
+LLM --> LLM2
+LLM --> LLM3
+
+VC1 ..> CC1 : <<extend>>
+
+@enduml

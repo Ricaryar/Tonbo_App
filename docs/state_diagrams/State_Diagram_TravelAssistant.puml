@@ -1,0 +1,40 @@
+@startuml Travel_Assistant_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> Ready : Setup Complete
+
+Ready --> NavigationRequested : Navigation Button Clicked
+Ready --> RoutePlanningRequested : Route Planning Button Clicked
+Ready --> TrafficInfoRequested : Traffic Info Button Clicked
+Ready --> WeatherRequested : Weather Button Clicked
+Ready --> EmergencyLocationRequested : Emergency Location Button Clicked
+
+NavigationRequested --> Processing : Feature Coming Soon
+RoutePlanningRequested --> Processing : Feature Coming Soon
+TrafficInfoRequested --> Processing : Feature Coming Soon
+WeatherRequested --> Processing : Feature Coming Soon
+
+EmergencyLocationRequested --> RequestingLocation : Get GPS Location
+RequestingLocation --> LocationReceived : GPS Location Obtained
+RequestingLocation --> LocationError : GPS Error
+
+LocationReceived --> SharingLocation : Share Location via SMS
+SharingLocation --> LocationShared : SMS Sent
+LocationShared --> Ready : Return
+
+LocationError --> Ready : Show Error Message
+Processing --> Ready : Announce Coming Soon
+
+Ready --> Paused : onPause()
+Paused --> Ready : onResume()
+
+Ready --> [*] : onDestroy()
+
+@enduml

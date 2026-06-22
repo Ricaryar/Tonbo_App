@@ -1,0 +1,57 @@
+@startuml Emergency_Assistance_Use_Cases
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam usecase {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+skinparam actor {
+    BackgroundColor #FFF9C4
+    BorderColor #F57F17
+}
+
+left to right direction
+
+actor "Visually Impaired\nUser in Emergency" as User
+actor "Emergency Service\n(999)" as Emergency
+
+usecase "Long Press Emergency\nButton (3 seconds)" as UC1
+usecase "Countdown Feedback" as UC2
+usecase "Dial Emergency\nService (999)" as UC3
+usecase "Voice Confirmation" as UC4
+usecase "Vibration Alert" as UC5
+usecase "Handle Permission" as UC6
+
+User --> UC1
+UC1 ..> UC2 : <<include>>
+UC1 ..> UC3 : <<include>>
+UC3 ..> UC4 : <<include>>
+UC3 ..> UC5 : <<include>>
+UC3 ..> UC6 : <<extend>>
+UC3 --> Emergency
+
+note right of UC1
+  Java File:
+  MainActivity.java
+  (Emergency button handler)
+end note
+
+note right of UC3
+  Java File:
+  EmergencyManager.java
+  (triggerEmergencyAlert method)
+end note
+
+note right of UC4
+  Java Files:
+  EmergencyManager.java
+  TTSManager.java
+end note
+
+note right of UC5
+  Java Files:
+  EmergencyManager.java
+  VibrationManager.java
+end note
+
+@enduml

@@ -1,0 +1,57 @@
+@startuml UI_Component_Hierarchy
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam class {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+abstract class BaseAccessibleActivity {
+    + TTSManager ttsManager
+    + VibrationManager vibrationManager
+    + LocaleManager localeManager
+    + initializeAccessibility()
+    + announceInfo()
+}
+
+class MainActivity extends BaseAccessibleActivity
+class RealAIDetectionActivity extends BaseAccessibleActivity
+class DocumentCurrencyActivity extends BaseAccessibleActivity
+class VoiceCommandActivity extends BaseAccessibleActivity
+class SettingsActivity extends BaseAccessibleActivity
+class LoginActivity extends BaseAccessibleActivity
+class FindItemsActivity extends BaseAccessibleActivity
+class TravelAssistantActivity extends BaseAccessibleActivity
+class InstantAssistanceActivity extends BaseAccessibleActivity
+class GestureManagementActivity extends BaseAccessibleActivity
+class SplashActivity extends BaseAccessibleActivity
+
+class DetectionOverlayView {
+    + drawDetectionResults()
+    + updateOverlay()
+}
+
+class OptimizedDetectionOverlayView extends DetectionOverlayView {
+    + smartTextPositioning()
+    + adjustDisplay()
+}
+
+class GestureDrawView {
+    + captureGesture()
+    + recognizePattern()
+}
+
+MainActivity *-- DetectionOverlayView
+RealAIDetectionActivity *-- OptimizedDetectionOverlayView
+GestureManagementActivity *-- GestureDrawView
+
+note right of BaseAccessibleActivity
+  Provides:
+  - TTS integration
+  - Vibration feedback
+  - Language management
+  - Voice command handling
+  - Accessibility features
+end note
+
+@enduml

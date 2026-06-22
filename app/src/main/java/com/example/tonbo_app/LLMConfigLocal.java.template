@@ -1,0 +1,28 @@
+package com.example.tonbo_app;
+
+/**
+ * Local LLM API Keys Configuration
+ * 
+ * INSTRUCTIONS:
+ * 1. Copy this file to LLMConfigLocal.java
+ * 2. Replace the placeholder API keys with your actual keys
+ * 3. This file is in .gitignore and will NOT be committed to Git
+ * 
+ * IMPORTANT: Never commit this file with real API keys!
+ */
+public class LLMConfigLocal {
+    // GLM-4-Flash（智譜）API Key — 語音助手文本對話僅使用此接口
+    public static final String ZHIPU_API_KEY = "YOUR_ZHIPU_API_KEY_HERE";
+    
+    // 語音識別API Key
+    public static final String SPEECH_RECOGNITION_API_KEY = "YOUR_SPEECH_RECOGNITION_API_KEY_HERE";
+    
+    // 阿里云OSS配置（用于上传音频文件）
+    // 获取方式：登录阿里云控制台 -> OSS -> 创建Bucket -> 获取AccessKey
+    public static final String OSS_ACCESS_KEY_ID = "YOUR_OSS_ACCESS_KEY_ID_HERE";
+    public static final String OSS_ACCESS_KEY_SECRET = "YOUR_OSS_ACCESS_KEY_SECRET_HERE";
+    public static final String OSS_BUCKET_NAME = "YOUR_OSS_BUCKET_NAME_HERE";
+    public static final String OSS_ENDPOINT = "YOUR_OSS_ENDPOINT_HERE"; // 例如: oss-cn-hangzhou.aliyuncs.com
+    public static final String OSS_REGION = "YOUR_OSS_REGION_HERE"; // 例如: cn-hangzhou
+}
+

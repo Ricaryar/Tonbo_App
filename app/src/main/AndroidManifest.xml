@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 震動權限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- 攝像頭權限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+    
+    <!-- 錄音權限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    
+    <!-- 網絡權限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    
+    <!-- 緊急求助權限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    
+    <!-- 位置權限（用於緊急求助時發送位置） -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    
+    <!-- 硬件功能聲明 -->
+    <uses-feature android:name="android.hardware.telephony" android:required="false" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Tonbo_App"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="7b649dda456d9085654e3c5d181dcb71" />
+
+        <!-- Splash Activity - 啟動頁面 -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Tonbo_App.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Main Activity - 主頁面 -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+            
+        <!-- Document Currency Activity - 閱讀助手 -->
+        <activity
+            android:name=".DocumentCurrencyActivity"
+            android:label="@string/document_title"
+            android:exported="false" />
+            
+        <!-- Settings Activity - 系統設定 -->
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings_page_title"
+            android:exported="false" />
+            
+        <!-- Find Items Activity - 尋找物品 -->
+        <activity
+            android:name=".FindItemsActivity"
+            android:label="@string/find_items_title"
+            android:exported="false" />
+            
+        <!-- Travel Assistant Activity - 出行協助 -->
+        <activity
+            android:name=".TravelAssistantActivity"
+            android:label="@string/travel_assistant_title"
+            android:exported="false" />
+
+        <activity
+            android:name=".StartTravelActivity"
+            android:label="@string/start_travel_voice"
+            android:exported="false" />
+
+        <activity
+            android:name=".NavigationActivity"
+            android:label="導航"
+            android:exported="false" />
+            
+        <!-- Login Activity - 登入 -->
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/login_title"
+            android:exported="false" />
+            
+        <!-- Real AI Detection Activity - 真實AI檢測 -->
+        <activity
+            android:name=".RealAIDetectionActivity"
+            android:label="真實AI檢測"
+            android:exported="false" />
+            
+        <!-- Voice Command Activity - 語音命令 -->
+        <activity
+            android:name=".VoiceCommandActivity"
+            android:label="@string/voice_command_title"
+            android:exported="false" />
+            
+        <!-- Instant Assistance Activity - 即時協助 -->
+        <activity
+            android:name=".InstantAssistanceActivity"
+            android:label="@string/instant_assistance_title"
+            android:exported="false" />
+            
+        <!-- Gesture Management Activity - 手勢管理 -->
+        <activity
+            android:name=".GestureManagementActivity"
+            android:label="@string/gesture_management"
+            android:exported="false" />
+            
+        <!-- Gesture Input Activity - 手勢輸入 -->
+        <activity
+            android:name=".GestureInputActivity"
+            android:label="手勢登入"
+            android:exported="false" />
+            
+        <!-- Video Call Activity - 視頻通話 -->
+        <activity
+            android:name=".VideoCallActivity"
+            android:label="視訊通話"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+    </application>
+
+</manifest>

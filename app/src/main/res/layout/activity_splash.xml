@@ -1,0 +1,44 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/primary_color"
+    android:padding="48dp">
+
+    <!-- App Logo -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_tonbo_logo"
+        android:alpha="0"
+        android:contentDescription="Tonbo app logo" />
+
+    <!-- App Name -->
+    <TextView
+        android:id="@+id/appNameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_marginTop="24dp"
+        android:alpha="0"
+        android:contentDescription="@string/app_name" />
+
+    <!-- Slogan -->
+    <TextView
+        android:id="@+id/sloganText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/splash_slogan"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:alpha="0"
+        android:contentDescription="@string/splash_slogan" />
+
+</LinearLayout>
+

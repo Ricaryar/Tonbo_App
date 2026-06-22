@@ -1,0 +1,71 @@
+@startuml Data_Storage_Architecture
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam component {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+package "Application" {
+    component [Activities] as App
+}
+
+package "Data Storage" {
+    component "SharedPreferences" as SP {
+        + User Settings
+        + Language Preferences
+        + TTS Parameters
+    }
+    
+    component "Local Database\n(SQLite)" as DB {
+        + Item Markers
+        + Emergency Event Logs
+        + Usage Statistics
+    }
+    
+    component "File Storage" as FS {
+        + AI Models (~50MB)
+        + Language Resources
+        + Configuration Files
+    }
+    
+    component "Memory\n(Runtime)" as Mem {
+        + Camera Frames
+        + Detection Results
+        + Conversation History
+        + Audio Streams
+    }
+}
+
+App --> SP : Read/Write Settings
+App --> DB : Store/Retrieve Items
+App --> FS : Load Models & Resources
+App --> Mem : Process Data
+
+note right of SP
+  Java Files:
+  UserManager.java
+  LocaleManager.java
+  SettingsActivity.java
+end note
+
+note right of DB
+  Java Files:
+  FindItemsActivity.java
+  ObjectSearchManager.java
+end note
+
+note right of FS
+  Files:
+  ssd_mobilenet_v1.tflite
+  Language strings.xml
+  AppConstants.java
+end note
+
+note right of Mem
+  Runtime data only
+  Not persisted
+  Cleared on app close
+end note
+
+@enduml

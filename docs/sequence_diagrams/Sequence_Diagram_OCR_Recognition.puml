@@ -1,0 +1,46 @@
+@startuml OCR_Recognition_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "DocumentCurrency\nActivity" as Activity
+participant CameraX
+participant "OCRHelper" as OCR
+participant "TTSManager" as TTS
+
+User -> Activity: Open Document Reading
+Activity -> CameraX: Initialize Camera
+CameraX --> Activity: Camera Ready
+
+User -> Activity: Align Document
+Activity -> CameraX: Capture Image
+CameraX --> Activity: Image Frame
+
+Activity -> OCR: recognizeText(ImageProxy)
+activate OCR
+
+OCR -> OCR: Preprocess Image
+OCR -> OCR: Run ML Kit OCR
+OCR -> OCR: Extract Text Blocks
+OCR --> Activity: Recognized Text
+
+deactivate OCR
+
+Activity -> TTS: Read Text Aloud
+TTS --> User: Voice Output
+
+alt User Chooses Line-by-Line
+    loop For Each Line
+        Activity -> TTS: Read Line
+        TTS --> User: Line Audio
+    end
+end
+
+note right of OCR
+  Java File:
+  OCRHelper.java
+  Google ML Kit Text Recognition API
+  Supports Chinese & English
+end note
+
+@enduml

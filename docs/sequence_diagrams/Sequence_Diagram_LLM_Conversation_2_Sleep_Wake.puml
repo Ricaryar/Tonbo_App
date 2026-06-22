@@ -1,0 +1,33 @@
+@startuml LLM_Conversation_Sleep_Wake_Flow
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "StreamingVoiceAI" as StreamingAI
+participant "ASRManager" as ASR
+participant "VoiceCommandActivity" as Activity
+
+loop Continuous Conversation
+    alt 30 Seconds of Silence
+        StreamingAI -> StreamingAI: Enter Sleep Mode
+        StreamingAI --> User: Sleep Mode Activated
+        
+        loop Sleep Mode
+            StreamingAI -> ASR: Check for Wake-up Input
+            alt Wake-up Command Detected
+                StreamingAI -> StreamingAI: Exit Sleep Mode
+                StreamingAI -> Activity: onWakeUpDetected()
+                Activity --> User: Wake-up Confirmation
+                break
+            end
+        end
+    end
+    
+    alt Stop Command Detected
+        StreamingAI -> Activity: onStopRequested()
+        Activity --> User: Exit Continuous Mode
+        break
+    end
+end
+
+@enduml

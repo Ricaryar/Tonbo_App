@@ -1,0 +1,45 @@
+@startuml Settings_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> LoadingSettings : loadSettings()
+LoadingSettings --> Ready : Settings Loaded
+
+Ready --> AdjustingSpeechRate : Speech Rate SeekBar Changed
+Ready --> AdjustingSpeechPitch : Speech Pitch SeekBar Changed
+Ready --> AdjustingSpeechVolume : Speech Volume SeekBar Changed
+Ready --> TogglingVibration : Vibration Switch Toggled
+Ready --> TogglingScreenReader : Screen Reader Switch Toggled
+Ready --> TogglingGestures : Gesture Controls Switch Toggled
+Ready --> TestingVoice : Test Voice Button Clicked
+Ready --> ResettingSettings : Reset Button Clicked
+
+AdjustingSpeechRate --> ApplyingSettings : Apply Changes
+AdjustingSpeechPitch --> ApplyingSettings : Apply Changes
+AdjustingSpeechVolume --> ApplyingSettings : Apply Changes
+TogglingVibration --> ApplyingSettings : Apply Changes
+TogglingScreenReader --> ApplyingSettings : Apply Changes
+TogglingGestures --> ApplyingSettings : Apply Changes
+
+ApplyingSettings --> SavingSettings : Save to SharedPreferences
+SavingSettings --> SettingsSaved : Settings Saved
+SettingsSaved --> Ready : Return
+
+TestingVoice --> PlayingTestVoice : Play Test Voice
+PlayingTestVoice --> Ready : Test Complete
+
+ResettingSettings --> ResettingToDefault : Reset Confirmed
+ResettingToDefault --> LoadingSettings : Reload Default Settings
+
+Ready --> Paused : onPause()
+Paused --> Ready : onResume()
+
+Ready --> [*] : onDestroy()
+
+@enduml

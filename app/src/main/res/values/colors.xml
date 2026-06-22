@@ -1,0 +1,49 @@
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Tonbo App Colors -->
+    <color name="background_dark">#FF000000</color>
+    <color name="card_background">#FFFFFFFF</color>
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#FFCCCCCC</color>
+    <color name="text_card">#FF333333</color>
+    <color name="emergency_red">#FFE53E3E</color>
+    <color name="menu_blue">#FF2196F3</color>
+    <color name="card_elevation">#1AFFFFFF</color>
+
+    <!-- 主色調 - 深藍色 (高對比度，易辨認) -->
+    <color name="primary_color">#0066CC</color>
+    <color name="primary_dark">#004499</color>
+    <color name="primary_light">#4D94FF</color>
+
+    <!-- 背景色 - 淺灰色 (減少眩光) -->
+    <color name="background">#F5F5F5</color>
+
+    <!-- 文字顏色 - 深黑色 (高可讀性) -->
+    <color name="primary_text">#000000</color>
+    <color name="secondary_text">#333333</color>
+
+    <!-- 功能顏色 -->
+    <color name="success_green">#388E3C</color>
+    <color name="warning_orange">#F57C00</color>
+
+    <!-- 語言按鈕顏色 -->
+    <color name="language_button_color">#1976D2</color>
+
+    <!-- 高對比度邊框 -->
+    <color name="border_color">#000000</color>
+    
+    <!-- 掃描相關顏色 -->
+    <color name="primary_blue">#0066CC</color>
+    <color name="primary_blue_dark">#004499</color>
+    
+    <!-- 設定頁面顏色 -->
+    <color name="background_primary">#FF000000</color>
+    
+    <!-- Find Items 功能顏色 -->
+    <color name="button_green">#FF4CAF50</color>
+    <color name="button_orange">#FFFF9800</color>
+    <color name="button_purple">#FF9C27B0</color>
+
+</resources>

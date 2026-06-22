@@ -1,0 +1,19 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- 按下狀態 -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="#FFB71C1C" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+    
+    <!-- 默認狀態 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFE53E3E" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+    
+</selector>

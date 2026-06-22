@@ -1,0 +1,22 @@
+@startuml Splash_Activity_States
+!theme plain
+skinparam backgroundColor #FFFFFF
+skinparam state {
+    BackgroundColor #E1F5FE
+    BorderColor #01579B
+}
+
+[*] --> Initializing : onCreate()
+
+Initializing --> Animating : startEntranceAnimation()
+Animating --> Waiting : Animation Complete (3 seconds)
+
+Waiting --> CheckingLogin : checkLoginStatusAndNavigate()
+
+CheckingLogin --> GestureLogin : Gesture Login Enabled
+CheckingLogin --> MainScreen : Gesture Login Disabled
+
+GestureLogin --> [*] : Navigate to GestureInputActivity
+MainScreen --> [*] : Navigate to MainActivity
+
+@enduml

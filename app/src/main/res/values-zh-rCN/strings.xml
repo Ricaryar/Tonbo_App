@@ -1,0 +1,146 @@
+<resources>
+    <!-- 应用名称 -->
+    <string name="app_name">瞳伴</string>
+    
+    <!-- 紧急求助按钮 -->
+    <string name="emergency_help_text">紧急求助</string>
+    <string name="long_press_send_text">长按3秒发送</string>
+    
+    <!-- 即時協助相關 - 普通話 -->
+    <string name="instant_assistance_title">即时协助</string>
+    <string name="instant_assistance_desc">一键呼叫志愿者获得即时协助</string>
+    <string name="ready_to_assist">准备协助</string>
+    <string name="checking_connection">检查连接中...</string>
+    <string name="quick_call_desc">一键呼叫志愿者</string>
+    <string name="quick_message_desc">快速发送消息</string>
+    <string name="video_call_desc">视频连线志愿者</string>
+    <string name="help_button_desc">帮助按钮</string>
+    
+    <!-- 即時協助功能說明 -->
+    <string name="instant_assistance_help">即时协助功能说明：\n1. 一键呼叫：直接拨打电话给志愿者\n2. 快速消息：发送预设消息给志愿者\n3. 视频连线：进行视频通话获得协助\n所有功能都需要网络连接和相应权限。</string>
+    
+    <!-- 狀態訊息 -->
+    <string name="calling_volunteer">正在呼叫志愿者...</string>
+    <string name="sending_message">正在发送消息...</string>
+    <string name="connecting_video">正在连线视频...</string>
+    <string name="message_sent">消息已发送给志愿者</string>
+    <string name="call_failed">呼叫失败，请检查网络连接</string>
+    <string name="message_failed">发送消息失败，请检查网络连接</string>
+    <string name="video_failed">视频连线失败，请检查网络连接</string>
+    <string name="connection_normal">连接正常</string>
+    
+    <!-- 權限相關 -->
+    <string name="call_permission_granted">通话权限已授予</string>
+    <string name="call_permission_denied">需要通话权限才能呼叫志愿者</string>
+    <string name="sms_permission_granted">短信权限已授予</string>
+    <string name="sms_permission_denied">需要短信权限才能发送消息</string>
+    <string name="camera_permission_granted">相机权限已授予</string>
+    <string name="camera_permission_denied">需要相机权限才能进行视频通话</string>
+    
+    <!-- Function Descriptions -->
+    <string name="desc_environment">描述周围环境和物体</string>
+    <string name="desc_document">扫描文档和识别货币</string>
+    <string name="desc_voice_command">使用语音命令控制应用</string>
+    <string name="desc_find_items">查找标记的个人物品</string>
+    <string name="desc_live_assistance">与志愿者视频通话</string>
+    
+    <!-- Travel Assistant -->
+    <string name="travel_assistant_title">出行协助</string>
+    <string name="travel_assistant_description">提供导航、路线规划、交通信息、天气更新和紧急位置分享服务</string>
+    
+    <!-- Settings Activity Strings -->
+    <string name="testing_voice">正在测试语音设置</string>
+    <string name="screen_reader_enabled">屏幕阅读器支持已启用</string>
+    <string name="screen_reader_disabled">屏幕阅读器支持已禁用</string>
+    <string name="gesture_enabled">手势操作已启用</string>
+    <string name="gesture_disabled">手势操作已禁用</string>
+    <string name="vibration_enabled">震动反馈已启用</string>
+    <string name="vibration_disabled">震动反馈已禁用</string>
+    <string name="reset_settings_title">重置设置</string>
+    <string name="reset_settings_message">确定要重置所有设置吗？</string>
+    <string name="settings_reset">所有设置已重置为默认值</string>
+    <string name="reset_cancelled">重置已取消</string>
+    <string name="confirm">确认</string>
+    <string name="back">返回</string>
+    <string name="status_enabled">已启用</string>
+    <string name="status_disabled">已禁用</string>
+    <string name="status_on">开启</string>
+    <string name="status_off">关闭</string>
+    
+    <!-- Speech Settings -->
+    <string name="current_speech_rate">当前语音速度：%d%%</string>
+    <string name="current_speech_pitch">当前音调：%d%%</string>
+    <string name="current_speech_volume">当前音量：%d%%</string>
+    <string name="current_vibration_status">震动反馈：%s</string>
+    <string name="current_screen_reader_status">屏幕阅读器支持：%s</string>
+    <string name="current_gesture_status">手势操作：%s</string>
+    
+    <!-- Emergency Settings -->
+    <string name="emergency_settings_title">紧急求助设置</string>
+    <string name="emergency_settings_page_title">紧急求助设置</string>
+    <string name="emergency_settings_page_desc">紧急求助设置页面</string>
+    <string name="add_emergency_contact_title">添加紧急联系人</string>
+    <string name="enter_phone_number">输入电话号码</string>
+    <string name="add_button">添加</string>
+    <string name="phone_examples">例如：999、+86-138-0000-0000</string>
+    <string name="emergency_contacts_list_title">紧急联系人</string>
+    <string name="emergency_message_preview">紧急消息预览</string>
+    <string name="emergency_message_content">紧急求助！我正在使用Tonbo应用，需要立即协助，请尽快联系我。</string>
+    <string name="test_emergency_function">测试紧急功能</string>
+    <string name="test_emergency_assistance">测试紧急求助</string>
+    <string name="test_mode_warning">注意：测试模式不会发送实际的求助信息，只会测试语音和震动功能</string>
+    <string name="complete_setup">完成设置</string>
+    <string name="back_button_desc_emergency">返回主页按钮</string>
+    <string name="add_contact_button_desc">添加紧急联系人按钮</string>
+    <string name="test_emergency_button_desc">测试紧急求助功能按钮</string>
+    <string name="setup_complete_button_desc">完成紧急求助设置按钮</string>
+    <string name="contacts_list_desc">紧急联系人列表</string>
+    <string name="emergency_message_preview_format">预设消息：\n%s</string>
+    <string name="emergency_setup_complete_title">紧急求助已设置完成</string>
+    <string name="emergency_setup_complete_desc">紧急求助设置完成页面</string>
+    <string name="test_emergency_button_complete">测试紧急功能</string>
+    <string name="test_emergency_button_incomplete">测试紧急求助（设置中）</string>
+    <string name="error_enter_phone">请输入电话号码</string>
+    <string name="error_invalid_phone">电话号码格式无效</string>
+    <string name="error_contact_exists">该联系人已存在</string>
+    <string name="error_add_contact">请至少添加一个紧急联系人</string>
+    <string name="test_emergency_confirmation">即将测试紧急功能，此操作不会发送实际的求助请求，仅会测试语音和震动功能。继续吗？</string>
+    
+    <!-- Speech Rate/Pitch/Volume Changes -->
+    <string name="speech_rate_changed_to">语音速度已调整为 %d%%</string>
+    <string name="speech_pitch_changed_to">音调已调整为 %d%%</string>
+    <string name="speech_volume_changed_to">音量已调整为 %d%%</string>
+    
+    <!-- Gesture Management -->
+    <string name="gesture_management">手势管理</string>
+    <string name="gesture_management_desc">手势管理功能，绘制手势绑定应用功能</string>
+    <string name="draw_gesture_hint">在区域内绘制手势</string>
+    <string name="gesture_recognized">已识别手势</string>
+    <string name="gesture_not_recognized">未识别到已保存的手势</string>
+    <string name="create_gesture">创建手势</string>
+    <string name="bind_function">绑定功能</string>
+    <string name="delete_gesture">删除手势</string>
+    
+    <!-- Content Descriptions -->
+    <string name="camera_preview_desc">相机预览画面</string>
+    <string name="object_detection_overlay_desc">物体检测结果覆盖层，显示检测框和标签</string>
+
+    <!-- Floating Voice Assistant -->
+    <string name="floating_voice_title">语音助手</string>
+    <string name="floating_voice_bubble_desc">浮动语音助手。点一下会读出用法并打开面板。长按立即聆听。可拖动位置。</string>
+    <string name="floating_voice_bubble_intro">屏幕上有浮动语音助手按钮。点一下会读出用法，并打开语音面板。</string>
+    <string name="floating_voice_bubble_tap_announce">语音助手。点一下打开面板，可以说话或者控制应用。长按立即开始聆听。可以拖动到另一个位置。</string>
+    <string name="floating_voice_bubble_long_press_announce">现在开始聆听，请说。</string>
+    <string name="floating_voice_panel_open_announce">语音面板已打开。最上面大按钮是开始说话。右上角是收起面板。点开始按钮说话，点收起按钮关闭面板。</string>
+    <string name="floating_voice_listen_announce">开始聆听，请说。</string>
+    <string name="floating_voice_stop_announce">已停止聆听。</string>
+    <string name="floating_voice_expand_announce">打开完整语音助手页面。</string>
+    <string name="floating_voice_close_announce">语音面板已收起。</string>
+    <string name="floating_voice_tap_to_speak">点上面的按钮开始说话</string>
+    <string name="floating_voice_expand">打开完整语音助手页面</string>
+    <string name="floating_voice_close">收起面板</string>
+    <string name="floating_voice_close_desc">收起语音面板，位于右上角</string>
+    <string name="floating_voice_start_button">开始说话</string>
+    <string name="floating_voice_start_button_desc">开始说话，位于面板最上方</string>
+    <string name="floating_voice_stop_button">停止聆听</string>
+</resources>

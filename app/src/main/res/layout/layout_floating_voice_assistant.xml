@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/floatingVoiceRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="false"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:focusable="false"
+    android:importantForAccessibility="no">
+
+    <LinearLayout
+        android:id="@+id/floatingVoicePanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/floating_voice_panel_bg"
+        android:clickable="true"
+        android:elevation="24dp"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/floatingPanelTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/floating_voice_title"
+                android:textColor="@color/menu_blue"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/floatingExpandButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/button_square_background"
+                android:backgroundTint="@color/menu_blue"
+                android:contentDescription="@string/floating_voice_expand"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_voice_command" />
+
+            <ImageButton
+                android:id="@+id/floatingClosePanelButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/button_square_background"
+                android:backgroundTint="@color/secondary_text"
+                android:contentDescription="@string/floating_voice_close"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_back_arrow_white" />
+        </LinearLayout>
+
+        <!-- 主要操作放喺上面，避免底部被遮擋 -->
+        <Button
+            android:id="@+id/floatingListenButton"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/voice_button_background"
+            android:backgroundTint="@null"
+            android:contentDescription="@string/floating_voice_start_button"
+            android:minHeight="72dp"
+            android:text="@string/floating_voice_start_button"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/floatingStatusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/floating_voice_tap_to_speak"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/floatingResultText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxLines="3"
+            android:minHeight="40dp"
+            android:textColor="#CCFFFFFF"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/floatingVoiceBubble"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="96dp"
+        android:background="@drawable/floating_voice_bubble_bg"
+        android:contentDescription="@string/floating_voice_bubble_desc"
+        android:elevation="20dp"
+        android:focusable="true"
+        android:importantForAccessibility="yes"
+        android:padding="14dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_voice_command" />
+
+</FrameLayout>

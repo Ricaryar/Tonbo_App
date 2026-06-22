@@ -1,0 +1,36 @@
+@startuml Travel_Assistant_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "TravelAssistantActivity" as Activity
+participant "GPS" as GPS
+participant "SMS" as SMS
+
+User -> Activity: Open Travel Assistant
+activate Activity
+
+Activity -> Activity: onCreate()
+Activity --> User: Show Travel Options
+
+alt User Requests Navigation
+    User -> Activity: Click Navigation Button
+    Activity --> User: "Feature Coming Soon"
+else User Requests Emergency Location
+    User -> Activity: Click Emergency Location Button
+    Activity -> GPS: getCurrentLocation()
+    activate GPS
+    GPS --> Activity: Location Data
+    deactivate GPS
+    Activity -> SMS: sendLocation(location)
+    activate SMS
+    SMS --> User: Location Shared via SMS
+    deactivate SMS
+else User Requests Other Features
+    User -> Activity: Click Feature Button
+    Activity --> User: "Feature Coming Soon"
+end
+
+deactivate Activity
+
+@enduml

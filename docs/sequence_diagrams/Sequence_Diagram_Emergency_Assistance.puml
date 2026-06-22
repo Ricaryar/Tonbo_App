@@ -1,0 +1,44 @@
+@startuml Emergency_Assistance_Sequence
+!theme plain
+skinparam backgroundColor #FFFFFF
+
+actor User
+participant "MainActivity" as Main
+participant "EmergencyManager" as EM
+participant "TTSManager" as TTS
+participant "VibrationManager" as Vib
+participant "Phone System" as Phone
+
+User -> Main: Long Press Button (3 seconds)
+activate Main
+
+Main -> Vib: vibrateClick()
+Vib --> User: Vibration Feedback
+
+Main -> TTS: speak("Emergency button pressed...")
+TTS --> User: Audio Feedback
+
+alt 3 Seconds Elapsed
+    Main -> EM: triggerEmergencyAlert()
+    activate EM
+    
+    EM -> TTS: speak("Calling emergency service 999...")
+    TTS --> User: Voice Confirmation
+    
+    EM -> Vib: vibrateEmergencyPattern()
+    Vib --> User: Strong Vibration
+    
+    EM -> Phone: Dial 999
+    activate Phone
+    Phone --> User: Call Initiated
+    deactivate Phone
+    
+    deactivate EM
+else User Releases Before 3s
+    Main -> TTS: announceInfo("Please long press for 3 seconds")
+    TTS --> User: Instruction
+end
+
+deactivate Main
+
+@enduml
