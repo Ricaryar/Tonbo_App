@@ -23,11 +23,11 @@
             android:id="@+id/page_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="手勢登入"
+            android:text="Gesture Login"
             android:textColor="#FFFFFF"
             android:textSize="32sp"
             android:textStyle="bold"
-            android:contentDescription="手勢登入頁面標題"
+            android:contentDescription="Gesture login page title"
             android:layout_marginBottom="16dp" />
 
         <!-- 說明文字 -->
@@ -35,7 +35,7 @@
             android:id="@+id/instruction_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="畫❌進入主頁，或繪製已保存的手勢進入對應功能"
+            android:text="Shake your phone twice to enter home, or draw a saved gesture for its function"
             android:textColor="#4FC3F7"
             android:textSize="20sp"
             android:textStyle="bold"
