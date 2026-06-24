@@ -18,14 +18,16 @@ import java.util.Map;
 
 /**
  * 港幣紙幣圖像分類器（YOLOv8n-cls ONNX）
- * 輸入 224×224 RGB，輸出 6 類港幣紙幣面額。
+ * 輸入 224×224 RGB，輸出 7 類（6 種港幣紙幣面額 + negative）。
  */
 public class CurrencyClassifier {
     private static final String TAG = "CurrencyClassifier";
 
     private static final String[] CLASS_NAMES = {
-            "1000_hkd", "100_hkd", "10_hkd", "20_hkd", "500_hkd", "50_hkd"
+            "1000_hkd", "100_hkd", "10_hkd", "20_hkd", "500_hkd", "50_hkd", "negative"
     };
+
+    private static final String NEGATIVE_CLASS = "negative";
 
     private static final Map<String, String> CLASS_TO_AMOUNT = new HashMap<>();
 
@@ -158,6 +160,11 @@ public class CurrencyClassifier {
                     }
 
                     String className = CLASS_NAMES[bestIndex];
+                    if (NEGATIVE_CLASS.equals(className)) {
+                        Log.d(TAG, String.format("視覺識別為非貨幣: %s (%.1f%%)", className, bestProb * 100));
+                        return null;
+                    }
+
                     String amount = CLASS_TO_AMOUNT.get(className);
                     if (amount == null) {
                         return null;

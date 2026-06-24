@@ -99,6 +99,24 @@ public class GestureManagementActivity extends BaseAccessibleActivity {
             announceInfo(message);
         });
         
+        // 繪畫手勢時的觸覺反饋，讓視障用戶感知正在繪製
+        gestureDrawView.setOnDrawListener(new GestureDrawView.OnDrawListener() {
+            @Override
+            public void onDrawStart() {
+                vibrationManager.vibrateFocus();
+            }
+
+            @Override
+            public void onDrawingProgress() {
+                vibrationManager.vibrateFocus();
+            }
+
+            @Override
+            public void onDrawEnd() {
+                vibrationManager.vibrateClick();
+            }
+        });
+
         // 手勢繪畫完成檢測（簡化實現）- 使用延遲檢測
         gestureDrawView.setOnTouchListener((v, event) -> {
             if (event.getAction() == android.view.MotionEvent.ACTION_UP) {

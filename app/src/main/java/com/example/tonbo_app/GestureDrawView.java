@@ -18,6 +18,13 @@ import java.util.List;
  */
 public class GestureDrawView extends View {
     private static final String TAG = "GestureDrawView";
+    private static final long DRAWING_FEEDBACK_INTERVAL_MS = 120L;
+
+    public interface OnDrawListener {
+        void onDrawStart();
+        void onDrawingProgress();
+        void onDrawEnd();
+    }
     
     private Paint paint;
     private Path currentPath;
@@ -25,6 +32,8 @@ public class GestureDrawView extends View {
     private List<Integer> colors;
     
     private int currentColor;
+    private OnDrawListener onDrawListener;
+    private long lastDrawingFeedbackTime;
     
     public GestureDrawView(Context context) {
         super(context);
@@ -79,11 +88,13 @@ public class GestureDrawView extends View {
             case MotionEvent.ACTION_DOWN:
                 currentPath = new Path();
                 currentPath.moveTo(x, y);
+                notifyDrawStart();
                 return true;
                 
             case MotionEvent.ACTION_MOVE:
                 currentPath.lineTo(x, y);
                 invalidate();
+                notifyDrawingProgress();
                 return true;
                 
             case MotionEvent.ACTION_UP:
@@ -93,6 +104,7 @@ public class GestureDrawView extends View {
                     currentPath = null;
                     invalidate();
                 }
+                notifyDrawEnd();
                 return true;
                 
             default:
@@ -100,6 +112,34 @@ public class GestureDrawView extends View {
         }
     }
     
+    public void setOnDrawListener(OnDrawListener listener) {
+        this.onDrawListener = listener;
+    }
+
+    private void notifyDrawStart() {
+        lastDrawingFeedbackTime = System.currentTimeMillis();
+        if (onDrawListener != null) {
+            onDrawListener.onDrawStart();
+        }
+    }
+
+    private void notifyDrawingProgress() {
+        long now = System.currentTimeMillis();
+        if (now - lastDrawingFeedbackTime < DRAWING_FEEDBACK_INTERVAL_MS) {
+            return;
+        }
+        lastDrawingFeedbackTime = now;
+        if (onDrawListener != null) {
+            onDrawListener.onDrawingProgress();
+        }
+    }
+
+    private void notifyDrawEnd() {
+        if (onDrawListener != null) {
+            onDrawListener.onDrawEnd();
+        }
+    }
+
     /**
      * 清除所有繪畫
      */
