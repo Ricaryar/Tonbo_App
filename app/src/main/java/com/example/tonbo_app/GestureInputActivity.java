@@ -70,6 +70,24 @@ public class GestureInputActivity extends BaseAccessibleActivity {
     }
 
     private void setupListeners() {
+        // 繪畫手勢時的觸覺反饋，讓視障用戶感知正在繪製
+        gestureDrawView.setOnDrawListener(new GestureDrawView.OnDrawListener() {
+            @Override
+            public void onDrawStart() {
+                vibrationManager.vibrateFocus();
+            }
+
+            @Override
+            public void onDrawingProgress() {
+                vibrationManager.vibrateFocus();
+            }
+
+            @Override
+            public void onDrawEnd() {
+                vibrationManager.vibrateClick();
+            }
+        });
+
         gestureDrawView.setOnTouchListener((v, event) -> {
             int action = event.getAction();
             if (action == MotionEvent.ACTION_DOWN) {

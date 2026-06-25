@@ -98,9 +98,14 @@ public class DocumentCurrencyActivity extends BaseAccessibleActivity {
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private ShakeDetector shakeDetector;
-    private static final float SHAKE_THRESHOLD = 11.5f; // 搖晃靈敏度
-    private static final int SHAKE_SLOP_TIME_MS = 700;  // 兩次搖晃最小間隔
-    private long lastShakeTime = 0;
+    private static final float SHAKE_THRESHOLD = 11.5f;
+    private static final int SHAKE_SLOP_TIME_MS = 400;
+    private static final int DOUBLE_SHAKE_WINDOW_MS = 2000;
+    private static final int REQUIRED_SHAKE_COUNT = 2;
+    private long lastShakePeakTime;
+    private int shakeCount;
+    private final Handler shakeResetHandler = new Handler(Looper.getMainLooper());
+    private final Runnable shakeResetRunnable = () -> shakeCount = 0;
 
     // OCR和貨幣檢測相關變量
     private OCRHelper ocrHelper;
@@ -141,11 +146,11 @@ public class DocumentCurrencyActivity extends BaseAccessibleActivity {
 
         // 進入閱讀助手時的語音引導：提示文字分析/錢幣分析可透過搖晃切換
         String cantonese = "閱讀助手支持文字分析同錢幣分析功能。"
-                + "預設係文字分析。你可以搖晃手機切換兩個模式，我會用語音提示你而家係邊個模式。";
+                + "預設係文字分析。你可以搖晃手機兩下切換兩個模式，我會用語音提示你而家係邊個模式。";
         String mandarin = "阅读助手支持文字分析和钱币分析功能。"
-                + "默认是文字分析。你可以摇晃手机在两个模式之间切换，我会用语音提示你当前是哪个模式。";
+                + "默认是文字分析。你可以摇晃手机两下在两个模式之间切换，我会用语音提示你当前是哪个模式。";
         String english = "Document assistant supports text analysis and currency analysis. "
-                + "By default it is in text analysis mode. You can shake your phone to switch between the two modes, "
+                + "By default it is in text analysis mode. You can shake your phone twice to switch between the two modes, "
                 + "and I will announce which mode you are using.";
 
         if ("english".equals(currentLanguage)) {
@@ -1453,15 +1458,33 @@ public class DocumentCurrencyActivity extends BaseAccessibleActivity {
     }
 
     /**
-     * 摇晃后切换模式，并进行震动与语音播报
+     * 檢測到一次有效搖晃峰值；連續搖晃兩次後才切換模式
      */
-    private void handleShake() {
+    private void onShakePeakDetected() {
         long now = System.currentTimeMillis();
-        if (now - lastShakeTime < SHAKE_SLOP_TIME_MS) return;
-        lastShakeTime = now;
+        if (now - lastShakePeakTime < SHAKE_SLOP_TIME_MS) {
+            return;
+        }
+        lastShakePeakTime = now;
 
+        shakeCount++;
         vibrationManager.vibrateClick();
+        Log.d(TAG, "搖晃計數: " + shakeCount + "/" + REQUIRED_SHAKE_COUNT);
 
+        if (shakeCount == 1) {
+            shakeResetHandler.removeCallbacks(shakeResetRunnable);
+            shakeResetHandler.postDelayed(shakeResetRunnable, DOUBLE_SHAKE_WINDOW_MS);
+        } else if (shakeCount >= REQUIRED_SHAKE_COUNT) {
+            shakeResetHandler.removeCallbacks(shakeResetRunnable);
+            shakeCount = 0;
+            switchModeByShake();
+        }
+    }
+
+    /**
+     * 連續搖晃兩次後切換模式，並進行語音播報
+     */
+    private void switchModeByShake() {
         if (isTextMode) {
             switchToCurrencyMode();
         } else {
@@ -1503,7 +1526,7 @@ public class DocumentCurrencyActivity extends BaseAccessibleActivity {
             float acceleration = (float) Math.sqrt(x * x + y * y + z * z) - SensorManager.GRAVITY_EARTH;
             if (Math.abs(acceleration) > SHAKE_THRESHOLD) {
                 Log.d(TAG, "搖晃檢測觸發: " + acceleration);
-                handleShake();
+                runOnUiThread(DocumentCurrencyActivity.this::onShakePeakDetected);
             }
         }
 
@@ -1534,6 +1557,8 @@ public class DocumentCurrencyActivity extends BaseAccessibleActivity {
                 sensorManager.unregisterListener(shakeDetector);
             } catch (Exception ignored) {}
         }
+        shakeResetHandler.removeCallbacks(shakeResetRunnable);
+        shakeCount = 0;
     }
 
     @Override
@@ -1548,6 +1573,8 @@ public class DocumentCurrencyActivity extends BaseAccessibleActivity {
                 sensorManager.unregisterListener(shakeDetector);
             } catch (Exception ignored) {}
         }
+        shakeResetHandler.removeCallbacks(shakeResetRunnable);
+        shakeCount = 0;
     }
 
     @Override
